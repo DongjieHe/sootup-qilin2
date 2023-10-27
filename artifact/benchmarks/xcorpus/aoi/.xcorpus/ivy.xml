@@ -1,0 +1,11 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="aoi-2.8.1"/>
+    <dependencies>
+
+        <dependency org="org.beanshell" name="bsh" rev="2.0b4"/>
+        <dependency org="com.sun.woodstock.dependlibs" name="jhall" rev="2.0"/>
+        <dependency org="javax.media" name="jmf" rev="2.1.1e"/>
+        <dependency org="pircbot" name="pircbot" rev="1.5.0"/>
+        <dependency org="net.java.dev.jogl" name="jogl" rev="1.1.1-rc6"/>
+    </dependencies>
+</ivy-module>

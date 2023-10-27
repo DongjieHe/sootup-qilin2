@@ -1,0 +1,21 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2018/fop.jar:benchmarks/dacapo2018/fop-deps/servlet-2.2.jar:benchmarks/dacapo2018/fop-deps/batik-all-1.9-fop.jar:benchmarks/dacapo2018/fop-deps/fop-transcoder-allinone-2.2.jar:benchmarks/dacapo2018/fop-deps/xmlgraphics-commons-2.2.jar:benchmarks/dacapo2018/fop-deps/xml-apis-ext-1.3.04.jar:benchmarks/dacapo2018/fop-deps/xml-apis-1.3.04.jar:benchmarks/dacapo2018/fop-deps/avalon-framework-api-4.3.1.jar:benchmarks/dacapo2018/fop-deps/serializer-2.7.2.jar:benchmarks/dacapo2018/fop-deps/commons-io-1.3.1.jar:benchmarks/dacapo2018/fop-deps/xercesImpl-2.9.1.jar:benchmarks/dacapo2018/fop-deps/avalon-framework-impl-4.3.1.jar:benchmarks/dacapo2018/fop-deps/commons-logging-1.0.4.jar:benchmarks/dacapo2018/fop-deps/fontbox-2.0.4.jar:benchmarks/dacapo2018/fop-deps/xalan-2.7.2.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jce.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jsse.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/management-agent.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/rt.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jfr.jar
+Warning: Mismatch between statement and reflection log entry - ClassNewInstance;org.xml.sax.helpers.NewInstance.newInstance;84;
+Hybrid k-OBJ ...
+include implicit entry!
+#EntrySize:13
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at soot.util.BitVector.expand(BitVector.java:252)
+	at soot.util.BitVector.set(BitVector.java:275)
+	at qilin.core.sets.HybridPointsToSet.fastAdd(HybridPointsToSet.java:163)
+	at qilin.core.sets.HybridPointsToSet.add(HybridPointsToSet.java:126)
+	at qilin.core.sets.HybridPointsToSet$2.visit(HybridPointsToSet.java:82)
+	at qilin.core.sets.HybridPointsToSet.forall(HybridPointsToSet.java:111)
+	at qilin.core.sets.HybridPointsToSet.nativeAddAll(HybridPointsToSet.java:78)
+	at qilin.core.sets.HybridPointsToSet.addAll(HybridPointsToSet.java:99)
+	at qilin.core.sets.DoublePointsToSet.flushNew(DoublePointsToSet.java:149)
+	at qilin.core.solver.Solver.propagate(Solver.java:89)
+	at qilin.core.PTA.pureRun(PTA.java:79)
+	at qilin.pta.tools.BasePTA.run(BasePTA.java:43)
+	at driver.Main.run(Main.java:49)
+	at driver.Main.mainRun(Main.java:58)
+	at driver.Main.main(Main.java:172)

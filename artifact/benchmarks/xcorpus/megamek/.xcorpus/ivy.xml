@@ -1,0 +1,7 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="megamek-0.35.18"/>
+    <dependencies>
+        <dependency org="javax.vecmath" name="vecmath" rev="1.5.2"/>
+
+    </dependencies>
+</ivy-module>

@@ -1,0 +1,370 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2018/eclipse.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jce.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jsse.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/management-agent.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/rt.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jfr.jar
+Mahjong ...
+Context-Insensitive ...
+include implicit entry!
+#EntrySize:13
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 100.3 seconds.
+Building FPG (Field Points-to Graph) ... FPG Construction elapsed time: 4.45s
+Creating heap abstraction ... Mahjong elapsed time: 18.07s
+-----------------------------------------------------------
+15327 objects in the allocation-site heap abstraction.
+9144 objects in the Mahjong heap abstraction.
+-----------------------------------------------------------
+-----------------------------------------------------------
+In the FPG (allocation-site heap abstraction), there are:
+      1991 types
+      3221 fields
+     15327 objects
+In the Mahjong heap abstraction, there are:
+      9144 objects
+-----------------------------------------------------------
+Writing Mahjong heap abstraction ...
+#MERGE HEAP (not-single):231
+#NON-MERGED HEAP (single):8913
+new sun.text.normalizer.NormalizerBase$QuickCheckResult
+new org.eclipse.osgi.internal.util.Tokenizer
+new sun.security.util.Cache$EqualByteArray
+new sun.util.locale.InternalLocaleBuilder$CaseInsensitiveChar
+new org.osgi.service.permissionadmin.PermissionInfo
+newarray (sun.security.x509.RDN)[0]
+new java.lang.ref.ReferenceQueue$Null
+new sun.misc.FloatingDecimal$BinaryToASCIIBuffer
+new sun.text.normalizer.NormalizerImpl$PrevArgs
+new java.net.InetAddress$Cache$Type
+newarray (java.lang.Object)[16]
+new java.io.ByteArrayInputStream
+new java.lang.Integer
+newarray (java.text.DateFormat$Field)[23]
+new sun.text.normalizer.ReplaceableString
+new java.util.Locale$Category
+newarray (java.io.File)[0]
+new sun.misc.NativeSignalHandler
+newarray (char[])[2]
+newarray (org.eclipse.osgi.internal.permadmin.SecurityRow)[0]
+new java.util.concurrent.ConcurrentHashMap$Traverser
+new java.util.concurrent.atomic.AtomicInteger
+newarray (java.lang.Object)[2]
+new java.util.HashMap
+new java.util.zip.Inflater
+new java.time.Duration
+new org.eclipse.osgi.container.Module$State
+new java.net.Authenticator$RequestorType
+newarray (org.apache.felix.resolver.ResolverImpl$PermutationType)[$stack4]
+newarray (int[])[16]
+new org.eclipse.osgi.container.ModuleContainerAdaptor$ModuleEvent
+new java.nio.file.attribute.PosixFilePermission
+new com.sun.org.apache.xalan.internal.utils.XMLSecurityManager$NameMap
+new java.lang.Character$UnicodeBlock
+newarray (java.lang.Object)[1]
+new java.util.BitSet
+new sun.net.www.protocol.file.Handler
+new java.math.BigDecimal
+new sun.security.action.GetPropertyAction
+newarray (org.eclipse.osgi.signedcontent.SignerInfo)[0]
+new com.sun.org.apache.xalan.internal.utils.XMLSecurityManager$Limit
+newarray (java.lang.Object)[1]
+newarray (java.lang.Integer)[$stack9]
+new org.apache.felix.resolver.Logger
+new org.dacapo.parser.Config$ThreadModel
+new java.nio.charset.CodingErrorAction
+new sun.net.www.protocol.http.HttpURLConnection$TunnelState
+new sun.security.util.DerInputBuffer
+new java.util.concurrent.atomic.AtomicBoolean
+new sun.nio.fs.UnixPath
+newarray (java.lang.String)[0]
+new org.eclipse.osgi.container.ModuleContainerAdaptor$ContainerEvent
+new sun.net.ProgressSource$State
+new java.time.temporal.ChronoField
+new sun.security.x509.SerialNumber
+newarray (org.osgi.framework.FrameworkListener)[0]
+new sun.net.www.protocol.http.AuthScheme
+newarray (java.lang.StackTraceElement)[0]
+newarray (java.math.BigInteger)[17]
+newarray (java.lang.Object)[0]
+newarray (char)[l2]
+newarray (org.eclipse.osgi.container.Module$StopOptions)[1]
+new java.io.ObjectStreamField
+newarray (java.lang.UNIXProcess$LaunchMechanism)[2]
+new java.util.concurrent.locks.AbstractQueuedSynchronizer$Node
+new sun.net.idn.StringPrep$Values
+new java.time.Instant
+new java.math.BigInteger
+new sun.net.www.protocol.jar.Handler
+new sun.nio.cs.Surrogate$Parser
+new java.lang.Boolean
+new org.eclipse.osgi.report.resolution.ResolutionReport$Entry$Type
+new java.lang.Shutdown$Lock
+new java.util.concurrent.atomic.AtomicReference
+new java.time.temporal.ChronoUnit
+new java.text.Normalizer$Form
+newarray (java.io.ObjectStreamField)[0]
+newarray (byte)[4]
+new java.text.FieldPosition
+new java.lang.UNIXProcess$LaunchMechanism
+new java.time.temporal.ValueRange
+new sun.text.CompactByteArray
+newarray (java.io.ObjectStreamField)[3]
+new java.text.ParsePosition
+newarray (double)[23]
+new java.nio.charset.CoderResult
+new sun.text.SupplementaryCharacterData
+new sun.net.www.protocol.https.Handler
+new javax.crypto.CryptoPermissions
+new java.lang.Character$UnicodeScript
+new java.time.LocalDateTime
+new sun.security.util.ManifestDigester$Section
+new com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl
+new java.lang.StringBuilder
+new sun.util.logging.PlatformLogger$Level
+new org.osgi.service.condpermadmin.BooleanCondition
+new java.time.LocalDate
+new org.eclipse.osgi.internal.framework.XMLParsingServiceFactory
+new jdk.xml.internal.JdkXmlFeatures$State
+new java.text.AttributedCharacterIterator$Attribute
+new sun.security.jca.ServiceId
+new sun.misc.FormattedFloatingDecimal$Form
+new sun.security.util.BitArray
+new java.time.LocalTime
+new java.lang.Long
+new java.util.regex.Pattern$TreeInfo
+newarray (org.eclipse.osgi.container.Module$State)[7]
+new java.math.RoundingMode
+newarray (java.security.Principal)[0]
+new java.lang.StringBuffer
+new java.util.Formatter$BigDecimalLayoutForm
+newarray (java.lang.Object[])[445]
+newarray (org.eclipse.osgi.container.Module$StartOptions)[0]
+newarray (java.lang.Byte)[1]
+newarray (org.eclipse.osgi.report.resolution.ResolutionReport$Entry$Type)[$stack4]
+new sun.security.action.GetBooleanAction
+new sun.text.normalizer.NormalizerImpl$ComposePartArgs
+new sun.security.x509.IPAddressName
+new org.eclipse.osgi.container.ModuleDatabase$Sort
+newarray (sun.security.util.DerValue)[3]
+newarray (byte[])[$stack25]
+newarray (boolean)[512]
+newarray (org.osgi.service.condpermadmin.Condition)[0]
+new sun.misc.FloatingDecimal$ExceptionalBinaryToASCIIBuffer
+newarray (org.eclipse.osgi.service.security.TrustEngine)[0]
+newarray (short)[l6]
+new sun.security.util.DerInputStream
+new sun.text.normalizer.NormalizerBase$IsNextNFDSafe
+newarray (long)[l6]
+new sun.net.sdp.SdpProvider$Action
+new java.util.Random
+new java.time.Month
+new sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator
+newarray (java.security.cert.Certificate)[numCerts]
+new java.math.MutableBigInteger
+newarray (java.lang.Object[])[0]
+new sun.nio.fs.UnixPath
+new java.util.jar.Attributes$Name
+new com.sun.org.apache.xalan.internal.utils.XMLSecurityManager$State
+new java.nio.file.StandardCopyOption
+new java.util.stream.StreamOpFlag$Type
+new org.apache.felix.resolver.ResolverImpl$DumbExecutor
+new sun.text.normalizer.NormalizerImpl$DecomposeArgs
+newarray (java.net.URL)[0]
+new java.lang.Object
+new java.util.concurrent.ConcurrentHashMap
+newarray (java.lang.Object)[1]
+newarray (jdk.xml.internal.JdkXmlFeatures$State)[$stack10]
+new java.nio.file.StandardOpenOption
+new java.util.Formatter$Flags
+newarray (java.lang.reflect.Method)[1]
+new sun.security.x509.CertificateVersion
+new sun.reflect.ReflectionFactory$GetReflectionFactoryAction
+new org.eclipse.osgi.container.Module$StartOptions
+new java.lang.Character
+newarray (org.eclipse.osgi.container.ModuleDatabase$Sort)[2]
+newarray (org.osgi.service.permissionadmin.PermissionInfo)[line#12]
+new org.eclipse.osgi.container.Module$Settings
+new sun.security.action.GetIntegerAction
+new java.lang.ThreadLocal
+newarray (org.eclipse.osgi.container.ModuleContainerAdaptor$ContainerEvent)[$stack4]
+newarray (sun.security.util.DerOutputStream)[$stack32]
+new org.dacapo.harness.Callback$Mode
+newarray (java.util.concurrent.ConcurrentHashMap$Node)[l3]
+new sun.security.util.HostnameChecker
+newarray (java.lang.String)[2]
+newarray (java.lang.Class)[18]
+new java.util.stream.Collector$Characteristics
+new sun.security.provider.NativePRNG$Variant
+new java.util.Base64$Encoder
+new java.math.MathContext
+new org.dacapo.harness.CommandLineArgs$Methodology
+newarray (java.nio.file.attribute.FileAttribute)[0]
+new java.io.ByteArrayOutputStream
+new sun.util.locale.provider.LocaleProviderAdapter$Type
+new java.util.concurrent.ConcurrentHashMap
+new sun.text.normalizer.Trie$DefaultGetFoldingOffset
+new sun.misc.FDBigInteger
+new java.lang.ConditionalSpecialCasing$Entry
+new java.lang.String
+newarray (com.sun.org.apache.xalan.internal.utils.FeaturePropertyBase$State)[2]
+new java.util.zip.CRC32
+new sun.text.normalizer.ReplaceableUCharacterIterator
+new com.sun.org.apache.xalan.internal.utils.FeaturePropertyBase$State
+new java.lang.SecurityManager
+new sun.misc.Signal
+new sun.nio.fs.LinuxFileSystemProvider
+new java.time.temporal.ChronoField
+new java.lang.Double
+new java.nio.HeapByteBuffer
+newarray (java.math.BigDecimal)[16]
+newarray (int)[17]
+newarray (org.eclipse.osgi.container.Module$Settings)[$stack4]
+new java.net.Proxy$Type
+new org.eclipse.osgi.internal.signedcontent.BERProcessor
+newarray (org.osgi.service.condpermadmin.Condition)[$stack9]
+new sun.util.locale.BaseLocale
+class "Ljava/util/TimeZone;"
+newarray (java.lang.String)[30]
+new org.apache.felix.resolver.ResolverImpl$PermutationType
+new java.nio.HeapCharBuffer
+new java.text.NumberFormat$Field
+new sun.text.normalizer.NormalizerBase$IsPrevNFDSafe
+new sun.net.sdp.SdpProvider$AddressPortRangeRule
+newarray (com.sun.org.apache.xalan.internal.utils.XMLSecurityManager$State)[5]
+newarray (sun.security.x509.Extension)[0]
+newarray (java.lang.Class)[2]
+new sun.security.x509.UniqueIdentity
+new java.security.cert.CertPathValidatorException$BasicReason
+new sun.security.rsa.RSAUtil$KeyType
+new com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl
+newarray (java.lang.Character$UnicodeScript)[103]
+new com.sun.org.apache.xalan.internal.utils.XMLSecurityPropertyManager$Property
+new java.util.concurrent.atomic.AtomicLong
+new sun.security.util.DerValue
+new jdk.xml.internal.JdkXmlFeatures$XmlFeature
+newarray (org.eclipse.osgi.container.Module$StartOptions)[1]
+new sun.misc.FloatingDecimal$PreparedASCIIToBinaryBuffer
+new java.util.Base64$Decoder
+newarray (java.util.concurrent.ConcurrentHashMap$CounterCell)[$stack60]
+newarray (org.eclipse.osgi.container.Module$StopOptions)[0]
+newarray (org.osgi.service.condpermadmin.ConditionInfo)[0]
+new java.util.concurrent.ConcurrentHashMap$CounterCell
+newarray (float)[11]
+new sun.security.util.DerOutputStream
+new java.io.File$PathStatus
+new java.text.DateFormat$Field
+newarray (java.util.Formatter$Flags)[6]
+new java.lang.Byte
+new java.nio.ByteOrder
+newarray (org.eclipse.osgi.container.ModuleContainerAdaptor$ModuleEvent)[10]
+selective pta starts!
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 76.5 seconds.
+PTS relation:1109438
+VAR CNT:112614
+AVG PTS: 9.851688067203012
+PTS relation (no native):1108105
+VAR CNT (no native):112585
+AVG PTS (no native): 9.842385752986633
+#globals: 2277
+#locals: 96856
+#allocNodeNumberer: 31285
+#fieldRefNodeNumberer: 198997
+ ====== Memory Usage ======
+Used Memory Before:                               7 GB
+Free Memory Before:                               7 GB
+Total Memory Before:                              15 GB
+Max Memory Before:                                256 GB
+Analysis:                                         mahjong-2object+1heap
+Time (sec):                                       76.55
+Used Memory After:                                15 GB
+Free Memory After:                                36 GB
+Total Memory After:                               51 GB
+Max Memory After:                                 256 GB
+ ====== Yummy ======
+#Single-Call Methods:                             5623
+#Single-Receiver Methods:                         7022
+#Single-Call-Single-Receiver Methods:             4459
+ ====== Call Graph ======
+#Method (Static):                                 63393
+#Reachable Method (CI):                           14689
+	#Reachable-Static Method (CI):                   3453
+#Reachable Method (CS):                           207341
+#Reachable App Method (CI):                       3869
+	#Reachable-App-Static Method (CI):               608
+#Reachable App Method (CS):                       11369
+#Call Edge(CI):                                   84600
+	#Static-Static Call Edge(CI):                    4684
+	#Static-Instance Call Edge(CI):                  17229
+	#Instance-Static Call Edge(CI):                  5852
+	#Instance-Instance Call Edge(CI):                56835
+	#Application-Application Call Edge(CI):          11637
+	#Application-Library Call Edge(CI):              17528
+	#Library-Application Call Edge(CI):              1978
+	#Library-Library Call Edge(CI):                  53460
+#Call Edge(CS):                                   5206122
+	#Static-Static Call Edge(CS):                    74269
+	#Static-Instance Call Edge(CS):                  1544014
+	#Instance-Static Call Edge(CS):                  56179
+	#Instance-Instance Call Edge(CS):                3531660
+	#Application-Application Call Edge(CS):          64036
+	#Application-Library Call Edge(CS):              369130
+	#Library-Application Call Edge(CS):              186942
+	#Library-Library Call Edge(CS):                  4586017
+#receivers:                                       350032
+	#thisreceivers:                                  0
+#avg p2s size for virtualcalls:                   14.500599945147872
+ ====== Statements ======
+#Cast (Total):                                    3761
+#Cast (AppOnly):                                  1855
+#May Fail Cast (Total):                           2107
+#May Fail Cast (AppOnly):                         1258
+#Static Call Site(Total):                         10370
+#Virtual Call Site(Total):                        57952
+#Virtual Call Site(AppOnly):                      21406
+#Virtual Call Site(Polymorphic):                  3435
+#Virtual Call Site(Polymorphic AppOnly):          1678
+#Virtual Call Site(Unreachable):                  1760
+#Avg Poly Call Targets:                           6.01863173216885
+ ====== Nodes ======
+#Context:                                         207342
+#Avg Context per Method:                          14.114499659632402
+#Method with Throw Pointer-to:                    8260
+#Alloc Node(CI):                                  8786
+#Alloc Node(CS):                                  22498
+#Global CS Pointer-to Relation:                   4273
+#Local CS Pointer-to Relation:                    25976998
+#Field CS Pointer-to Relation:                    852490
+#Global Pointer (lib + app):                      2277
+#Global Avg Points-To Target(CI):                 1.1335090030742205
+#Global Avg Points-To Target(CS):                 1.8765920070267896
+#App Global Pointer:                              397
+#App Global Avg Points-To Target(CI):             1.0277078085642317
+#App Global Avg Points-To Target(CS):             1.3727959697732997
+#Avg Points-to Target(CI):                        9.851688067203012
+#Avg Points-to Target without Native Var(CI):     9.842385752986633
+#Local Pointer (lib + app):                       96838
+#Local Avg Points-To Target(CI):                  9.268995642206573
+#Local Avg Points-To Target(CS):                  25.08440901299077
+#App Local Pointer:                               32615
+#App Local Avg Points-To Target(CI):              10.952506515407022
+#App Local Avg Points-To Target(CS):              28.991323010884564
+#Context Local Pointer (lib + app):               962400
+#Context Local Avg Points-To Target(CI):          9.932167497921862
+#Context Local Avg Points-To Target(CS):          26.991893183707397
+#App Context Local Pointer:                       96640
+#App Context Local Avg Points-To Target(CI):      9.187675910596026
+#App Context Local Avg Points-To Target(CS):      24.139134933774834
+ ====== Assignments ======
+#Alloc-pag-edge:                                  4585727
+#Simple-pag-edge:                                 10738614
+	#Local-to-Local:                                 9898210
+	#Field-to-Local:                                 584871
+	#Local-to-Field:                                 255533
+#Store-pag-edge:                                  105866
+#Load-pag-edge:                                   195952
+ ====== Classes ======
+#Class:                                           7160
+#Appclass:                                        767
+#Libclass:                                        6231
+#Phantomclass:                                    162
+#Class(reachable):                                2166
+#Appclass(reachable):                             535
+#Libclass(reachable):                             1630
+
+Main PTA (including pre-analysis) elapsed time: 225.03s
+Main PTA consumed memory: 20908.41 MB

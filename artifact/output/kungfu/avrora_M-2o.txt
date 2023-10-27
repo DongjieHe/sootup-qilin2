@@ -1,0 +1,391 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2018/avrora.jar:/home/dongjie/QiLin/QiLin/artifact/benchmarks/JREs/jre1.8.0_312/lib/management-agent.jar:/home/dongjie/QiLin/QiLin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jsse.jar:/home/dongjie/QiLin/QiLin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jfr.jar:/home/dongjie/QiLin/QiLin/artifact/benchmarks/JREs/jre1.8.0_312/lib/rt.jar:/home/dongjie/QiLin/QiLin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jce.jar
+Mahjong ...
+Context-Insensitive ...
+include implicit entry!
+#EntrySize:13
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 39.6 seconds.
+Building FPG (Field Points-to Graph) ... FPG Construction elapsed time: 1.55s
+Creating heap abstraction ... Mahjong elapsed time: 4.57s
+-----------------------------------------------------------
+11746 objects in the allocation-site heap abstraction.
+6908 objects in the Mahjong heap abstraction.
+-----------------------------------------------------------
+-----------------------------------------------------------
+In the FPG (allocation-site heap abstraction), there are:
+      2134 types
+      2495 fields
+     11746 objects
+In the Mahjong heap abstraction, there are:
+      6908 objects
+-----------------------------------------------------------
+Writing Mahjong heap abstraction ...
+#MERGE HEAP (not-single):252
+#NON-MERGED HEAP (single):6656
+new sun.util.locale.provider.LocaleProviderAdapter$Type
+newarray (java.text.DateFormat$Field)[17]
+new avrora.arch.legacy.LegacyInstr$CLS
+new avrora.arch.legacy.LegacyInstr$BRVC
+newarray (java.lang.Object)[1]
+new java.nio.HeapByteBuffer
+new avrora.arch.legacy.LegacyInstr$RCALL
+new avrora.arch.legacy.LegacyInstr$BRLO
+new avrora.arch.legacy.LegacyInstr$RJMP
+new avrora.arch.avr.AVRDisassembler$XLPM_INC_0_reader
+newarray (sun.security.util.DerOutputStream)[$stack65]
+new avrora.arch.legacy.LegacyInstr$SES
+new avrora.arch.legacy.LegacyInstr$CLC
+new sun.security.util.DerInputBuffer
+new java.util.concurrent.atomic.AtomicLong
+new java.security.cert.CertPathValidatorException$BasicReason
+new avrora.arch.avr.AVROperand$DADDR
+new avrora.arch.msp430.MSP430Operand$INDX
+new java.lang.Shutdown$Lock
+new avrora.arch.avr.AVRDisassembler$NULL_reader
+new java.time.temporal.ChronoField
+new avrora.arch.legacy.LegacyInstr$ICALL
+new avrora.arch.legacy.LegacyInstr$BCLR
+new avrora.sim.clock.RippleSynchronizer$WaitLink
+new sun.text.normalizer.NormalizerBase$QuickCheckResult
+new sun.misc.Signal
+new avrora.sim.mcu.AtmelMicrocontroller$InterruptType
+newarray (java.math.BigInteger)[17]
+new avrora.arch.msp430.MSP430AddrMode$IMMSYM
+new sun.misc.FloatingDecimal$PreparedASCIIToBinaryBuffer
+new org.dacapo.parser.Config$ThreadModel
+new java.net.InetAddress$Cache$Type
+new avrora.arch.legacy.LegacyInstr$BRMI
+newarray (java.util.concurrent.ConcurrentHashMap$CounterCell)[$stack60]
+new avrora.arch.msp430.MSP430AddrMode$IMMREG
+new java.util.Formatter$Flags
+new sun.misc.FDBigInteger
+new javax.crypto.CryptoPermissions
+new avrora.arch.legacy.LegacyInstr$BRNE
+newarray (java.util.Formatter$Flags)[1]
+new java.util.Formatter$BigDecimalLayoutForm
+new java.lang.StringBuffer
+new java.util.Base64$Decoder
+newarray (java.lang.StackTraceElement)[0]
+newarray (java.io.File)[0]
+new avrora.arch.legacy.LegacyInstr$BRBC
+new avrora.arch.legacy.LegacyInstr$SEV
+newarray (java.lang.Object)[1]
+new sun.util.logging.PlatformLogger$Level
+new avrora.arch.legacy.LegacyInstr$CBI
+new sun.security.util.DerValue
+new avrora.arch.legacy.LegacyInstr$RETI
+new java.text.FieldPosition
+new avrora.arch.avr.AVRDisassembler$LD_ST_XYZ_2_reader
+new avrora.arch.msp430.MSP430Operand$SYMB
+new java.net.Inet6Address$Inet6AddressHolder
+new java.lang.Boolean
+newarray (java.io.ObjectStreamField)[0]
+newarray (java.io.ObjectStreamField)[3]
+new avrora.arch.legacy.LegacyInstr$SEC
+new java.lang.Object
+new sun.util.locale.BaseLocale
+new java.net.Inet4Address
+new avrora.arch.legacy.LegacyInstrProperties
+new avrora.arch.legacy.LegacyInstr$EIJMP
+newarray (boolean)[1]
+new avrora.arch.avr.AVROperand$IMM5
+new avrora.arch.avr.AVRDisassembler$LD_ST_PD_XYZ_0_reader
+new sun.reflect.ReflectionFactory$GetReflectionFactoryAction
+new avrora.arch.legacy.LegacyInstr$BRLT
+new avrora.arch.legacy.LegacyInstr$CLT
+new avrora.arch.msp430.MSP430AddrMode$IMMIND
+newarray (long)[4]
+newarray (java.lang.Integer)[$stack31]
+new java.lang.Double
+new avrora.arch.legacy.LegacyInstr$BRSH
+new avrora.arch.avr.AVRDisassembler$LD_ST_PD_XYZ_2_reader
+new java.util.Locale$Category
+new avrora.arch.legacy.LegacyInstr$SEI
+new java.text.NumberFormat$Field
+new java.time.LocalTime
+new java.util.zip.CRC32
+newarray (java.lang.String)[0]
+new java.util.regex.Pattern$TreeInfo
+new sun.text.normalizer.NormalizerImpl$PrevArgs
+new java.lang.Character$UnicodeBlock
+newarray (float)[11]
+newarray (char)[l3]
+new avrora.arch.legacy.LegacyInstr$BRVS
+new avrora.arch.legacy.LegacyInstr$CALL
+new avrora.arch.msp430.MSP430Operand$IMM
+new avrora.arch.legacy.LegacyInstr$SLEEP
+new avrora.arch.msp430.MSP430Operand$AIREG_B
+newarray (java.net.URL)[0]
+new avrora.arch.msp430.MSP430Operand$IREG
+newarray (int[])[$stack7]
+new avrora.arch.legacy.LegacyInstr$BRHS
+new avrora.arch.avr.AVRDisassembler$LD_ST_XYZ_0_reader
+new avrora.arch.avr.AVROperand$PADDR
+new avrora.arch.avr.AVRDisassembler$LD_ST_AI_XYZ_2_reader
+new java.math.MathContext
+new avrora.arch.legacy.LegacyInstr$BRTS
+new org.dacapo.harness.CommandLineArgs$Methodology
+newarray (java.lang.Object)[l4]
+new avrora.arch.msp430.MSP430Operand$IMML
+new java.time.LocalDateTime
+new java.lang.StringBuilder
+new java.util.Base64$Encoder
+new avrora.arch.legacy.LegacyInstr$BRTC
+new avrora.arch.legacy.LegacyInstr$JMP
+new java.text.ParsePosition
+new avrora.arch.avr.AVRDisassembler$LD_ST_PD_XYZ_1_reader
+new avrora.arch.legacy.LegacyInstr$SET
+new sun.text.normalizer.Trie$DefaultGetFoldingOffset
+new java.util.concurrent.ConcurrentHashMap
+new java.lang.Character$UnicodeScript
+new avrora.arch.avr.AVRDisassembler$GPR_0_reader
+new java.time.temporal.ChronoUnit
+new sun.util.locale.InternalLocaleBuilder$CaseInsensitiveChar
+new avrora.arch.legacy.LegacyInstr$BRID
+newarray (short)[32]
+new sun.misc.FloatingDecimal$ExceptionalBinaryToASCIIBuffer
+new sun.security.x509.IPAddressName
+newarray (java.security.Principal)[0]
+newarray (java.lang.Byte)[1]
+new java.time.temporal.ValueRange
+new avrora.arch.legacy.LegacyInstr$BREQ
+new sun.misc.NativeSignalHandler
+new java.time.Month
+newarray (byte)[$stack20]
+new java.time.LocalDate
+new sun.security.x509.CertificateVersion
+new avrora.arch.legacy.LegacyInstr$SEZ
+new sun.security.util.ManifestDigester$Section
+new sun.security.action.GetBooleanAction
+new sun.security.util.DerOutputStream
+new avrora.arch.msp430.MSP430AddrMode$IMM
+new avrora.arch.msp430.MSP430Operand$AIREG_W
+new sun.misc.FormattedFloatingDecimal$Form
+new java.nio.charset.CoderResult
+newarray (java.security.cert.Certificate)[0]
+new sun.security.rsa.RSAUtil$KeyType
+new java.util.HashMap
+new avrora.arch.legacy.LegacyInstr$CLH
+new avrora.arch.legacy.LegacyInstr$LPM
+new java.lang.ConditionalSpecialCasing$Entry
+new avrora.arch.avr.AVRDisassembler$GPRGPR_0_reader
+new sun.security.action.GetPropertyAction
+new avrora.arch.legacy.LegacyInstr$EICALL
+new java.lang.ref.ReferenceQueue$Null
+new avrora.arch.legacy.LegacyInstr$BRBS
+newarray (java.lang.String)[2]
+newarray (java.math.BigDecimal)[11]
+newarray (java.lang.Class)[1]
+new sun.misc.FloatingDecimal$BinaryToASCIIBuffer
+new java.nio.HeapCharBuffer
+newarray (java.net.InetAddress)[1]
+new avrora.arch.legacy.LegacyInstr$CLZ
+new java.text.DateFormat$Field
+new avrora.arch.legacy.LegacyInstr$BRCC
+new avrora.arch.avr.AVRDisassembler$LD_ST_AI_XYZ_0_reader
+new java.lang.Byte
+new java.nio.charset.CodingErrorAction
+newarray (byte[])[16]
+new avrora.arch.avr.AVRDisassembler$BRANCH_0_reader
+new avrora.arch.msp430.MSP430AddrMode$IMMABS
+newarray (int)[$stack28]
+new avrora.arch.legacy.LegacyInstr$SEH
+new org.dacapo.harness.Callback$Mode
+new sun.security.x509.UniqueIdentity
+new avrora.arch.avr.AVRDisassembler$XLPM_REG_0_reader
+newarray (java.lang.Character$UnicodeScript)[103]
+new avrora.arch.legacy.LegacyInstr$SBIS
+new avrora.arch.avr.AVROperand$IMM3
+new avrora.arch.msp430.MSP430Operand$ABSO
+new avrora.arch.legacy.LegacyInstr$BRPL
+new java.util.concurrent.ConcurrentHashMap$CounterCell
+newarray (java.util.concurrent.ConcurrentHashMap$Node)[l5]
+new avrora.arch.legacy.LegacyInstr$ELPM
+new avrora.sim.mcu.ReprogrammableCodeSegment$Factory
+new avrora.arch.legacy.LegacyInstr$SPM
+new avrora.arch.avr.AVROperand$LREL
+class "Ljava/security/Permission;"
+new avrora.arch.legacy.LegacyInstr$SBI
+new java.lang.String
+new avrora.arch.legacy.LegacyInstr$BRCS
+new java.util.jar.Attributes$Name
+newarray (double)[2]
+new avrora.arch.legacy.LegacyDisassembler
+new sun.text.normalizer.NormalizerImpl$DecomposeArgs
+newarray (java.lang.Object)[0]
+new avrora.arch.legacy.LegacyInstr$RET
+new java.io.File$PathStatus
+new avrora.arch.legacy.LegacyInstr$SBIC
+new sun.security.util.DerInputStream
+new avrora.sim.RWRegister
+new java.time.Instant
+new java.lang.Integer
+new java.math.BigInteger
+new avrora.arch.legacy.LegacyInstr$CLV
+new java.util.zip.Inflater
+new avrora.arch.legacy.LegacyInstr$CLI
+new java.lang.Character
+new sun.security.x509.SerialNumber
+new java.math.BigDecimal
+new java.nio.ByteOrder
+new sun.text.CompactByteArray
+new avrora.arch.avr.AVRDisassembler$LD_ST_XYZ_1_reader
+new java.math.RoundingMode
+new avrora.arch.avr.AVRDisassembler$XLPM_D_0_reader
+new java.time.temporal.ChronoField
+new avrora.arch.avr.AVRDisassembler$LD_ST_AI_XYZ_1_reader
+new java.io.ByteArrayInputStream
+new avrora.sim.radio.noise
+new sun.security.provider.NativePRNG$Variant
+new avrora.arch.msp430.MSP430Operand$SREG
+new avrora.arch.legacy.LegacyInstr$BRHC
+new avrora.sim.platform.Mica2$Factory
+new avrora.arch.legacy.LegacyInstr$WDR
+new java.util.Date
+new java.io.ByteArrayOutputStream
+new java.time.Duration
+newarray (java.lang.String)[l9]
+new avrora.arch.legacy.LegacyInstr$NOP
+new avrora.arch.legacy.LegacyInstr$BRGE
+new sun.security.util.BitArray
+new avrora.arch.legacy.LegacyInstr$CLN
+new avrora.arch.legacy.LegacyInstr$SEN
+new avrora.arch.legacy.LegacyInstr$BREAK
+new java.text.AttributedCharacterIterator$Attribute
+new avrora.arch.avr.AVROperand$IMM6
+new java.util.concurrent.ConcurrentHashMap$Traverser
+new java.net.Inet6Address
+newarray (sun.security.util.DerValue)[l8]
+new sun.security.jca.ServiceId
+new java.io.ObjectStreamField
+new sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator
+newarray (sun.security.x509.RDN)[0]
+new java.math.MutableBigInteger
+new java.text.Normalizer$Form
+new avrora.arch.legacy.LegacyInstr$IJMP
+new java.util.concurrent.atomic.AtomicInteger
+new java.lang.ThreadLocal
+new java.util.concurrent.ConcurrentHashMap
+new sun.text.SupplementaryCharacterData
+new avrora.arch.avr.AVRDisassembler$HGPRIMM8_0_reader
+new avrora.arch.legacy.LegacyInstr$BSET
+newarray (char[])[2]
+newarray (sun.security.x509.Extension)[0]
+newarray (java.lang.Class)[0]
+new java.util.Random
+new avrora.arch.legacy.LegacyInstr$BRIE
+selective pta starts!
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 15.9 seconds.
+PTS relation:368755
+VAR CNT:80026
+AVG PTS: 4.607939919526154
+PTS relation (no native):368168
+VAR CNT (no native):79997
+AVG PTS (no native): 4.602272585221946
+#globals: 2333
+#locals: 67017
+#allocNodeNumberer: 19376
+#fieldRefNodeNumberer: 117442
+ ====== Memory Usage ======
+Used Memory Before:                               3 GB
+Free Memory Before:                               1 GB
+Total Memory Before:                              5 GB
+Max Memory Before:                                256 GB
+Analysis:                                         mahjong-2object+1heap
+Time (sec):                                       15.999
+Used Memory After:                                4 GB
+Free Memory After:                                8 GB
+Total Memory After:                               13 GB
+Max Memory After:                                 256 GB
+ ====== Yummy ======
+#Single-Call Methods:                             5224
+#Single-Receiver Methods:                         6112
+#Single-Call-Single-Receiver Methods:             4286
+ ====== Call Graph ======
+#Method (Static):                                 79974
+#Reachable Method (CI):                           11899
+	#Reachable-Static Method (CI):                   2779
+#Reachable Method (CS):                           126056
+#Reachable App Method (CI):                       4256
+	#Reachable-App-Static Method (CI):               701
+#Reachable App Method (CS):                       25228
+#Call Edge(CI):                                   54735
+	#Static-Static Call Edge(CI):                    4083
+	#Static-Instance Call Edge(CI):                  10519
+	#Instance-Static Call Edge(CI):                  4797
+	#Instance-Instance Call Edge(CI):                35336
+	#Application-Application Call Edge(CI):          12793
+	#Application-Library Call Edge(CI):              3987
+	#Library-Application Call Edge(CI):              295
+	#Library-Library Call Edge(CI):                  37663
+#Call Edge(CS):                                   842001
+	#Static-Static Call Edge(CS):                    44627
+	#Static-Instance Call Edge(CS):                  160915
+	#Instance-Static Call Edge(CS):                  35361
+	#Instance-Instance Call Edge(CS):                601098
+	#Application-Application Call Edge(CS):          116782
+	#Application-Library Call Edge(CS):              34107
+	#Library-Application Call Edge(CS):              740
+	#Library-Library Call Edge(CS):                  690375
+#receivers:                                       206160
+	#thisreceivers:                                  0
+#avg p2s size for virtualcalls:                   3.6962213814513
+ ====== Statements ======
+#Cast (Total):                                    1676
+#Cast (AppOnly):                                  332
+#May Fail Cast (Total):                           671
+#May Fail Cast (AppOnly):                         207
+#Static Call Site(Total):                         8795
+#Virtual Call Site(Total):                        39056
+#Virtual Call Site(AppOnly):                      12421
+#Virtual Call Site(Polymorphic):                  1289
+#Virtual Call Site(Polymorphic AppOnly):          145
+#Virtual Call Site(Unreachable):                  1099
+#Avg Poly Call Targets:                           6.682699767261443
+ ====== Nodes ======
+#Context:                                         126057
+#Avg Context per Method:                          10.593025210084033
+#Method with Throw Pointer-to:                    6030
+#Alloc Node(CI):                                  6803
+#Alloc Node(CS):                                  12572
+#Global CS Pointer-to Relation:                   17950
+#Local CS Pointer-to Relation:                    2329694
+#Field CS Pointer-to Relation:                    194918
+#Global Pointer (lib + app):                      2333
+#Global Avg Points-To Target(CI):                 7.572224603514788
+#Global Avg Points-To Target(CS):                 7.6939562794684955
+#App Global Pointer:                              803
+#App Global Avg Points-To Target(CI):             20.03486924034869
+#App Global Avg Points-To Target(CS):             20.0560398505604
+#Avg Points-to Target(CI):                        4.607939919526154
+#Avg Points-to Target without Native Var(CI):     4.602272585221946
+#Local Pointer (lib + app):                       67012
+#Local Avg Points-To Target(CI):                  4.185996537933504
+#Local Avg Points-To Target(CS):                  7.421431982331523
+#App Local Pointer:                               21249
+#App Local Avg Points-To Target(CI):              4.376488305332016
+#App Local Avg Points-To Target(CS):              6.034778107205045
+#Context Local Pointer (lib + app):               552025
+#Context Local Avg Points-To Target(CI):          2.766622888456139
+#Context Local Avg Points-To Target(CS):          4.220269009555727
+#App Context Local Pointer:                       105073
+#App Context Local Avg Points-To Target(CI):      3.0884718243506897
+#App Context Local Avg Points-To Target(CS):      5.604132365117585
+ ====== Assignments ======
+#Alloc-pag-edge:                                  1502056
+#Simple-pag-edge:                                 2322402
+	#Local-to-Local:                                 2020638
+	#Field-to-Local:                                 195738
+	#Local-to-Field:                                 106026
+#Store-pag-edge:                                  58702
+#Load-pag-edge:                                   111101
+ ====== Classes ======
+#Class:                                           9538
+#Appclass:                                        1922
+#Libclass:                                        7554
+#Phantomclass:                                    62
+#Class(reachable):                                2336
+#Appclass(reachable):                             1168
+#Libclass(reachable):                             1167
+
+Main PTA (including pre-analysis) elapsed time: 87.17s
+Main PTA consumed memory: 7846.27 MB

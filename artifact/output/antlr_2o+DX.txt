@@ -1,0 +1,67 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2006/antlr.jar:benchmarks/dacapo2006/antlr-deps.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/rt.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/jsse.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/jce.jar
+.... Heuristic...
+k-OBJ ...
+Context-Insensitive ...
+debloating ....
+include implicit entry!
+#EntrySize:14
+Spark elapsed time: 4.71s
+staticinvoke <java.lang.ClassLoader: long findNative(java.lang.ClassLoader,java.lang.String)>();;<java.lang.ClassLoader: long findNative(java.lang.ClassLoader,java.lang.String)>
+HackUtility construction elapsed time: 0.66s
+pre-containerFinder elapsed time: 0.00s
+mid-containerFinder elapsed time: 10.93s
+remain-containerFinder elapsed time: 0.00s
+# Objects encapsulate only primitive data:1164
+# Objects do no work as a container:6508
+# Container objects:1566
+PatternBasedCDOFinder.<init> elapsed time: 11.60s
+#CSHEAP:420; vs ;1566
+#ContainerFactory:70
+#ContainerWrapper:156
+#InnerContainer:239
+#ContainerElement:2
+#PolycallRelevant:14
+WHY not a inner container?AllocNode 2439 new java.lang.StringBuilder in method <java.util.Hashtable: void <init>(int,float)>
+WHY not a inner container?AllocNode 1336 new java.lang.StringBuilder in method <java.util.HashMap: void <init>(int,float)>
+WHY not a inner container?AllocNode 7184 new java.lang.IllegalStateException in method <java.util.IdentityHashMap: void resize(int)>
+WHY not a inner container?AllocNode 1334 new java.lang.StringBuilder in method <java.util.HashMap: void <init>(int,float)>
+WHY not a inner container?AllocNode 1333 new java.lang.IllegalArgumentException in method <java.util.HashMap: void <init>(int,float)>
+WHY not a inner container?AllocNode 4500 newarray (int)[l4] in method <java.text.AttributedString: int ensureRunBreak(int,boolean)>
+WHY not a inner container?AllocNode 2440 new java.lang.IllegalArgumentException in method <java.util.Hashtable: void <init>(int,float)>
+WHY not a inner container?AllocNode 7562 new java.lang.InternalError in method <java.util.TreeSet: java.lang.Object clone()>
+WHY not a inner container?AllocNode 1453 new java.lang.IllegalArgumentException in method <java.util.ArrayList: void <init>(int)>
+WHY not a inner container?AllocNode 3370 new java.lang.NullPointerException in method <java.util.ListResourceBundle: void loadLookup()>
+WHY not a inner container?AllocNode 4497 newarray (int)[10] in method <java.text.AttributedString: void createRunAttributeDataVectors()>
+WHY not a inner container?AllocNode 1454 new java.lang.StringBuilder in method <java.util.ArrayList: void <init>(int)>
+WHY not a inner container?AllocNode 1458 new java.lang.StringBuilder in method <java.util.Vector: void <init>(int,int)>
+WHY not a inner container?AllocNode 1457 new java.lang.IllegalArgumentException in method <java.util.Vector: void <init>(int,int)>
+WHY not a inner container?AllocNode 2441 new java.lang.StringBuilder in method <java.util.Hashtable: void <init>(int,float)>
+WHY not a inner container?AllocNode 1335 new java.lang.IllegalArgumentException in method <java.util.HashMap: void <init>(int,float)>
+WHY not a inner container?AllocNode 14378 new java.lang.InternalError in method <java.util.Hashtable: java.lang.Object clone()>
+WHY not a inner container?AllocNode 2438 new java.lang.IllegalArgumentException in method <java.util.Hashtable: void <init>(int,float)>
+WHY not a container  wrapper?AllocNode 9855 new java.lang.NullPointerException in method <java.util.concurrent.Executors: java.util.concurrent.Callable callable(java.lang.Runnable,java.lang.Object)>
+WHY not a container  wrapper?AllocNode 7319 new java.lang.IndexOutOfBoundsException in method <java.util.AbstractList: java.util.ListIterator listIterator(int)>
+WHY not a container  wrapper?AllocNode 9373 new java.lang.IndexOutOfBoundsException in method <java.util.SubList: java.util.ListIterator listIterator(int)>
+WHY not a container  wrapper?AllocNode 7320 new java.lang.StringBuilder in method <java.util.AbstractList: java.util.ListIterator listIterator(int)>
+WHY not a container  wrapper?AllocNode 9374 new java.lang.StringBuilder in method <java.util.SubList: java.util.ListIterator listIterator(int)>
+WHY not a container element?AllocNode 9834 new java.util.concurrent.atomic.AtomicInteger in method <java.util.concurrent.LinkedBlockingQueue: void <init>(int)>
+WHY not a container element?AllocNode 9836 new java.util.concurrent.locks.ReentrantLock in method <java.util.concurrent.LinkedBlockingQueue: void <init>(int)>
+WHY not a container element?AllocNode 9837 new java.lang.IllegalArgumentException in method <java.util.concurrent.LinkedBlockingQueue: void <init>(int)>
+WHY not a container element?AllocNode 9835 new java.util.concurrent.locks.ReentrantLock in method <java.util.concurrent.LinkedBlockingQueue: void <init>(int)>
+WHY not a container element?AllocNode 2462 new java.lang.NullPointerException in method <java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>
+WHY not a container element?AllocNode 10246 new java.lang.StringBuilder in method <java.util.LinkedList: boolean addAll(int,java.util.Collection)>
+WHY not a container element?AllocNode 2325 new java.lang.NullPointerException in method <java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>
+WHY not a container element?AllocNode 10245 new java.lang.IndexOutOfBoundsException in method <java.util.LinkedList: boolean addAll(int,java.util.Collection)>
+PatternBasedCDOFinder.run elapsed time: 0.75s
+
+DebloaterX elapsed time: 12.35s
+selective pta starts!
+Time (sec):                                       7.826000213623047
+#Reachable Method (CI):                           7806
+#Call Edge(CI):                                   51319
+#May Fail Cast (Total):                           511
+#Virtual Call Site(Polymorphic):                  1643
+#Avg Points-to Target without Native Var(CI):     9.067184976406878
+
+Main PTA (including pre-analysis) elapsed time: 32.67s
+Main PTA consumed memory: 9107.55 MB

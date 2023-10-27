@@ -1,0 +1,8 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="jext-5.0"/>
+    <dependencies>
+        <dependency org="jython" name="jython" rev="2.1"/>
+        <dependency org="jgoodies" name="looks" rev="1.2.2"/>
+
+    </dependencies>
+</ivy-module>

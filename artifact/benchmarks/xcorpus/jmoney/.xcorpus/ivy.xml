@@ -1,0 +1,8 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="jmoney-0.4.4"/>
+    <dependencies>
+
+        <dependency org="commons-logging" name="commons-logging" rev="1.0.3"/>
+        <dependency org="jasperreports" name="jasperreports" rev="0.5.0"/>
+    </dependencies>
+</ivy-module>

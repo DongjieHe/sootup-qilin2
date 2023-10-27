@@ -1,0 +1,59 @@
+site_name: SootUp
+#site_url: https://example.com/
+repo_url: https://github.com/soot-oss/SootUp/
+edit_uri: edit/develop/docs/
+
+nav:
+    - Home: index.md
+    - How to Start:
+      - Installation: installation.md
+      - Getting started: getting-started.md
+    - General information:
+      - Design Decisions: whatsnew.md
+      - Jimple: jimple.md
+      - Call Graph Construction: call-graph-construction.md
+      - Advanced Topics: advanced-topics.md
+    - More information:
+      - Javadoc: /SootUp/apidocs
+      - FAQ: faq.md
+#    - Used by: tools.md
+#    - Analyses: analyses.md
+
+theme:
+  palette:
+    primary: white
+  name: material
+  logo: ./SootUpLogo.svg
+  favicon: ./icon.svg
+  features:
+    - navigation.sections
+
+plugins:
+  - tooltips
+  - search
+  - include:
+      src_path: 'sootup.examples/src/test/java/sootup/examples'
+
+extra_css:
+  - css/hint.min.css
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+      use_pygments: true
+      extend_pygments_lang:
+        - name: jimple
+          lang: lspserver
+          options:
+            filetype: jimple
+            # the path of the jimplelsp.jar needs to be the same as in the gh-pages.yml workflow
+            lspcommand: "java -jar ./jimplelsp.jar"
+
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
+

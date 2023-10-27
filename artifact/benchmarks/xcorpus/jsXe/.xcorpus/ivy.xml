@@ -1,0 +1,7 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="jsXe-04_beta"/>
+    <dependencies>
+        <dependency org="xml-resolver" name="xml-resolver" rev="1.1"/>
+
+    </dependencies>
+</ivy-module>

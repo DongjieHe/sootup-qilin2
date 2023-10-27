@@ -1,0 +1,30 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2006/antlr.jar:benchmarks/dacapo2006/antlr-deps.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/rt.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/jsse.jar:/Users/dongjie/Documents/Work/qilin/artifact/benchmarks/JREs/jre1.6.0_45/lib/jce.jar
+.... Heuristic...
+k-OBJ ...
+Context-Insensitive ...
+debloating ....
+include implicit entry!
+#EntrySize:14
+Spark elapsed time: 4.66s
+start analysis!
+finish MFG analysis!
+start analysis!
+finish PFG analysis!
+#InitOnCSDG:174
+#StillOnCSDG:3
+#Heaps:9239
+#CondA:2084
+#CS:1183
+#CI:8056
+
+Conch elapsed time: 1.82s
+selective pta starts!
+Time (sec):                                       9.71500015258789
+#Reachable Method (CI):                           7806
+#Call Edge(CI):                                   51319
+#May Fail Cast (Total):                           511
+#Virtual Call Site(Polymorphic):                  1643
+#Avg Points-to Target without Native Var(CI):     9.066984433641071
+
+Main PTA (including pre-analysis) elapsed time: 23.96s
+Main PTA consumed memory: 5626.47 MB

@@ -1,0 +1,529 @@
+[main] INFO driver.Main - Setting Soot ClassPath: benchmarks/dacapo2018/batik.jar:benchmarks/dacapo2018/batik-deps/xmlgraphics-commons-2.2.jar:benchmarks/dacapo2018/batik-deps/xml-apis-ext-1.3.04.jar:benchmarks/dacapo2018/batik-deps/xml-apis-1.3.04.jar:benchmarks/dacapo2018/batik-deps/js.jar:benchmarks/dacapo2018/batik-deps/serializer-2.7.2.jar:benchmarks/dacapo2018/batik-deps/crimson-1.1.3.jar:benchmarks/dacapo2018/batik-deps/xercesImpl-2.9.1.jar:benchmarks/dacapo2018/batik-deps/xalan-2.7.2.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jce.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jsse.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/management-agent.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/rt.jar:/home/dongjie/Work/qilin/artifact/benchmarks/JREs/jre1.8.0_312/lib/jfr.jar
+Mahjong ...
+Context-Insensitive ...
+include implicit entry!
+#EntrySize:13
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 169.0 seconds.
+Building FPG (Field Points-to Graph) ... FPG Construction elapsed time: 8.94s
+Creating heap abstraction ... Mahjong elapsed time: 42.98s
+-----------------------------------------------------------
+23466 objects in the allocation-site heap abstraction.
+13447 objects in the Mahjong heap abstraction.
+-----------------------------------------------------------
+-----------------------------------------------------------
+In the FPG (allocation-site heap abstraction), there are:
+      3588 types
+      5427 fields
+     23466 objects
+In the Mahjong heap abstraction, there are:
+     13447 objects
+-----------------------------------------------------------
+Writing Mahjong heap abstraction ...
+#MERGE HEAP (not-single):390
+#NON-MERGED HEAP (single):13057
+new org.apache.batik.css.engine.value.svg.SpacingManager
+new java.nio.file.StandardOpenOption
+newarray (java.lang.Object)[1]
+new sun.security.util.ManifestDigester$Section
+new java.text.Normalizer$Form
+new sun.awt.geom.Order1
+new java.util.concurrent.atomic.AtomicLong
+new java.lang.Character
+new org.apache.batik.transcoder.keys.BooleanKey
+new java.time.Duration
+new sun.awt.geom.Order3
+new sun.java2d.loops.CompositeType
+new java.lang.Class$MethodArray
+new java.text.AttributedCharacterIterator$Attribute
+newarray (java.util.concurrent.ConcurrentHashMap$CounterCell)[$stack60]
+new sun.java2d.marlin.Dasher$LengthIterator$Side
+new java.lang.ref.ReferenceQueue$Null
+new org.apache.batik.transcoder.keys.FloatKey
+new sun.nio.fs.LinuxFileSystemProvider
+newarray (sun.security.x509.RDN)[0]
+new java.util.HashMap
+new sun.util.locale.BaseLocale
+new sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator
+new org.apache.batik.apps.rasterizer.DestinationType
+new java.util.concurrent.atomic.AtomicInteger
+new sun.security.jca.ServiceId
+new org.apache.batik.dom.events.DocumentEventSupport$MutationEventFactory
+new java.awt.image.SinglePixelPackedSampleModel
+new java.awt.Insets
+new java.awt.geom.AffineTransform
+new java.nio.HeapCharBuffer
+newarray (java.awt.geom.AffineTransform)[l3]
+newarray (java.io.ObjectStreamClass$MemberSignature)[$stack32]
+newarray (java.awt.geom.Point2D$Float)[$stack52]
+new sun.text.normalizer.NormalizerBase$IsPrevNFDSafe
+new org.apache.crimson.jaxp.SAXParserFactoryImpl
+new java.lang.ConditionalSpecialCasing$Entry
+new org.apache.batik.css.engine.value.FloatValue
+new java.awt.ImageCapabilities
+new java.awt.geom.Point2D$Double
+newarray (sun.font.PhysicalFont)[0]
+new org.apache.batik.ext.awt.image.rendered.DisplacementMapRed$TileOffsets
+new org.apache.xmlgraphics.java2d.color.RenderingIntent
+new sun.awt.X11.XBaseWindow$StateLock
+new java.awt.Dialog$ModalExclusionType
+new sun.misc.FDBigInteger
+newarray (sun.text.bidi.BidiRun)[0]
+newarray (short[])[l2]
+new org.apache.xpath.VariableStack
+new org.apache.batik.ext.awt.image.LinearTransfer
+new java.util.Formatter$BigDecimalLayoutForm
+new org.apache.batik.gvt.font.UnicodeRange
+new java.nio.HeapByteBuffer
+new sun.java2d.StateTrackableDelegate
+new java.util.zip.Inflater
+new java.awt.image.DataBufferInt
+newarray (int[])[$stack8]
+newarray (java.security.cert.Certificate)[l6]
+new java.lang.Character$UnicodeBlock
+new sun.awt.X11.XClientMessageEvent
+new org.apache.batik.ext.awt.image.SVGComposite
+new java.time.temporal.ChronoUnit
+newarray (boolean)[numGlyphs]
+new org.apache.batik.gvt.font.GVTLineMetrics
+new javax.imageio.plugins.jpeg.JPEGQTable
+new sun.java2d.pisces.Renderer
+new java.nio.charset.CodingErrorAction
+newarray (java.io.ObjectStreamField)[0]
+newarray (sun.java2d.marlin.Dasher$LengthIterator$Side)[4]
+new org.apache.batik.ext.awt.image.ARGBChannel
+new java.nio.channels.FileChannel$MapMode
+newarray (byte)[$stack7]
+new java.lang.Boolean
+class "Lcom/sun/imageio/plugins/jpeg/DQTMarkerSegment;"
+new sun.security.action.GetPropertyAction
+newarray (org.apache.batik.ext.awt.image.rendered.DisplacementMapRed$TileOffsets)[$stack43]
+new java.io.ObjectStreamClass$MemberSignature
+new org.apache.batik.css.engine.value.RGBColorValue
+newarray (sun.security.util.DerValue)[3]
+new sun.awt.SunHints$Value
+new org.apache.batik.gvt.text.GVTAttributedCharacterIterator$TextAttribute
+newarray (long[])[20]
+new java.awt.Color
+new sun.font.LayoutPathImpl$SegmentPath$LineInfo
+newarray (java.lang.String)[2]
+new com.sun.imageio.plugins.jpeg.SOFMarkerSegment$ComponentSpec
+new sun.misc.FloatingDecimal$BinaryToASCIIBuffer
+new sun.misc.FloatingDecimal$PreparedASCIIToBinaryBuffer
+newarray (sun.security.x509.Extension)[0]
+new org.apache.batik.ext.awt.geom.Linear
+new java.time.Instant
+new org.apache.batik.ext.awt.image.codec.png.PNGTranscoderInternalCodecWriteAdapter
+new sun.font.StrikeMetrics
+new org.apache.batik.ext.awt.image.CompositeRule
+new sun.misc.Signal
+new org.apache.xmlgraphics.java2d.color.CIELabColorSpace
+new java.util.Date
+new sun.awt.X11.XAtom
+new sun.java2d.StateTrackable$State
+newarray (java.awt.Shape)[numGlyphs]
+new java.awt.image.ConvolveOp
+newarray (java.lang.String[])[0]
+new java.nio.file.StandardCopyOption
+new org.apache.batik.dom.events.DocumentEventSupport$MouseEventFactory
+new sun.security.util.DerOutputStream
+new org.apache.batik.gvt.font.GVTGlyphMetrics
+new org.apache.batik.ext.awt.MultipleGradientPaint$ColorSpaceEnum
+newarray (double)[4]
+newarray (java.awt.Rectangle)[10]
+new sun.text.normalizer.NormalizerBase$IsNextNFDSafe
+newarray (org.apache.batik.gvt.font.UnicodeRange)[$stack40]
+new org.apache.batik.css.engine.StringIntMap
+new java.time.temporal.ChronoField
+newarray (org.apache.batik.css.engine.value.ShorthandManager)[0]
+new sun.net.www.protocol.jar.Handler
+newarray (float[][])[$stack10]
+new java.text.FieldPosition
+new java.util.Base64$Decoder
+new java.lang.StringBuffer
+new org.apache.batik.parser.AWTPathProducer
+new java.awt.image.BandCombineOp
+new sun.security.x509.SerialNumber
+new org.mozilla.javascript.UniqueTag
+newarray (java.math.BigDecimal)[16]
+new java.awt.Color
+new java.awt.geom.Rectangle2D$Double
+newarray (java.lang.Short)[256]
+new sun.text.CompactByteArray
+new sun.awt.X11.XSelectionEvent
+new org.mozilla.javascript.MemberBox
+new com.sun.imageio.plugins.png.CRC
+new java.awt.image.DataBufferShort
+new javax.crypto.CryptoPermissions
+newarray (java.lang.Integer)[$stack31]
+new org.apache.batik.ext.awt.geom.PathLength$PathSegment
+new sun.java2d.pipe.ShapeSpanIterator
+newarray (sun.java2d.pisces.Dasher$LengthIterator$Side)[l1]
+new java.util.Locale$Category
+new sun.security.action.GetBooleanAction
+new java.awt.SystemColor
+new java.util.Base64$Encoder
+new java.io.ObjectStreamField
+new java.util.concurrent.ConcurrentLinkedQueue$Node
+new java.util.zip.CRC32
+new org.apache.batik.dom.events.DocumentEventSupport$UIEventFactory
+new java.awt.image.DataBufferUShort
+new sun.font.LayoutPathImpl$SegmentPath
+newarray (java.lang.StackTraceElement)[0]
+newarray (java.lang.String)[0]
+new org.apache.batik.ext.awt.image.IdentityTransfer
+new java.util.Random
+new java.time.LocalDate
+new sun.security.util.BitArray
+new java.lang.Object
+newarray (org.apache.batik.gvt.font.Kern)[$stack8]
+new sun.java2d.pisces.PiscesRenderingEngine$NormMode
+new java.time.LocalDateTime
+newarray (java.lang.Object)[1]
+new java.io.File$PathStatus
+new org.apache.batik.dom.xbl.GenericXBLManager
+new java.time.Month
+new java.lang.UNIXProcess$LaunchMechanism
+newarray (java.util.Formatter$Flags)[2]
+new java.awt.geom.GeneralPath
+new java.math.RoundingMode
+new java.awt.font.TransformAttribute
+newarray (com.sun.imageio.plugins.jpeg.SOSMarkerSegment$ScanComponentSpec)[l7]
+newarray (sun.java2d.cmm.ColorTransform)[2]
+new org.apache.batik.ext.awt.image.rendered.TileBlock
+newarray (java.lang.Class)[4]
+new sun.misc.NativeSignalHandler
+new java.math.MutableBigInteger
+newarray (java.lang.Object)[2]
+new java.util.concurrent.locks.AbstractQueuedSynchronizer$Node
+newarray (com.sun.imageio.plugins.jpeg.SOFMarkerSegment$ComponentSpec)[l5]
+new org.xml.sax.helpers.SecuritySupport
+new org.apache.batik.ext.awt.image.codec.png.PNGEncodeParam$Gray
+new java.awt.ComponentOrientation
+new sun.text.bidi.BidiRun
+new sun.awt.CausedFocusEvent$Cause
+newarray (java.lang.Object)[4]
+new sun.text.normalizer.NormalizerImpl$PrevArgs
+new java.math.BigInteger
+new java.security.AccessControlContext
+new java.time.temporal.ValueRange
+new sun.awt.geom.Order2
+new sun.java2d.jules.JulesRenderingEngine
+new sun.java2d.cmm.ProfileDeferralInfo
+new org.dacapo.harness.Callback$Mode
+newarray (java.awt.AWTKeyStroke)[2]
+new sun.text.normalizer.NormalizerImpl$DecomposeArgs
+new sun.font.Underline$StandardUnderline
+new org.apache.batik.gvt.font.KerningTable
+newarray (java.lang.reflect.Method)[l2#3]
+newarray (int)[1]
+newarray (java.lang.Character$UnicodeScript)[103]
+new java.lang.String
+new sun.java2d.marlin.CollinearSimplifier$SimplifierState
+new java.awt.geom.Rectangle2D$Float
+new org.apache.batik.dom.events.DocumentEventSupport$SimpleEventFactory
+newarray (java.lang.Object)[l1]
+new org.apache.batik.anim.dom.TraitInformation
+newarray (java.util.concurrent.ConcurrentHashMap$Node)[l3]
+new org.apache.xml.utils.NodeVector
+new java.awt.Dimension
+new java.lang.Shutdown$Lock
+newarray (java.security.ProtectionDomain)[0]
+new sun.awt.X11.XColor
+newarray (org.mozilla.javascript.MemberBox)[l11]
+new java.awt.Point
+new com.sun.imageio.plugins.jpeg.JPEGImageReader$CallBackLock$State
+new java.util.zip.Deflater
+newarray (java.awt.Dimension)[2]
+newarray (org.apache.batik.css.engine.StringIntMap$Entry)[$stack4]
+new java.awt.image.DataBufferFloat
+new sun.security.provider.NativePRNG$Variant
+new sun.java2d.pisces.PiscesTileGenerator
+new sun.java2d.marlin.OffHeapArray
+new java.util.concurrent.ConcurrentHashMap$CounterCell
+newarray (double[][])[w]
+newarray (float)[400]
+new com.sun.imageio.plugins.jpeg.SOFMarkerSegment
+new sun.font.CoreMetrics
+new sun.awt.X11.XEvent
+newarray (int[][])[5]
+new sun.font.LayoutPathImpl$EndType
+new sun.reflect.ClassFileAssembler
+newarray (java.text.DateFormat$Field)[17]
+new org.apache.batik.ext.awt.MultipleGradientPaint$CycleMethodEnum
+new org.dacapo.parser.Config$ThreadModel
+new com.sun.imageio.plugins.jpeg.COMMarkerSegment
+newarray (char)[l5]
+new java.awt.geom.Line2D$Float
+new java.lang.Character$UnicodeScript
+new org.apache.batik.css.engine.value.svg.OpacityManager
+new org.apache.batik.ext.awt.image.rendered.IndexImage$Counter
+new java.lang.Float
+newarray (short)[l1]
+new sun.java2d.pisces.PiscesCache
+new java.lang.Short
+newarray (java.lang.Object[])[170]
+newarray (java.lang.Object)[16]
+newarray (java.lang.String)[l5]
+new java.net.InetAddress$Cache$Type
+newarray (byte[])[6]
+new java.util.concurrent.ConcurrentHashMap$Traverser
+new sun.awt.X11.XSetWindowAttributes
+new sun.java2d.marlin.MarlinRenderingEngine
+new java.awt.font.GlyphMetrics
+new java.awt.image.DataBufferDouble
+new java.util.concurrent.ConcurrentHashMap
+new org.apache.batik.gvt.flow.FlowRegions$Transition
+new java.awt.font.FontRenderContext
+newarray (org.apache.xpath.objects.XObject)[varArraySize]
+newarray (java.nio.file.attribute.FileAttribute)[0]
+new org.apache.batik.ext.awt.image.ConcreteComponentTransferFunction
+new java.text.NumberFormat$Field
+newarray (java.lang.String[])[14]
+new java.security.cert.CertPathValidatorException$BasicReason
+new sun.java2d.jules.JulesTile
+new org.apache.batik.parser.UnitProcessor$UnitResolver
+new java.nio.ByteOrder
+new sun.util.locale.provider.LocaleProviderAdapter$Type
+new org.dacapo.harness.CommandLineArgs$Methodology
+new com.sun.imageio.plugins.jpeg.AdobeMarkerSegment
+new org.apache.batik.ext.awt.geom.Quadradic
+new sun.awt.X11.XWindowAttributes
+new java.time.LocalTime
+newarray (java.lang.Object)[1]
+newarray (sun.security.util.DerOutputStream)[$stack32]
+new sun.awt.X11.XPropertyCache$PropertyCacheEntry
+new sun.misc.FormattedFloatingDecimal$Form
+new java.lang.Double
+newarray (java.security.Principal)[0]
+new java.lang.StringBuffer
+newarray (java.io.File)[0]
+new sun.text.normalizer.Trie$DefaultGetFoldingOffset
+new org.apache.batik.css.engine.value.svg.MarkerManager
+new sun.security.x509.CertificateVersion
+new java.lang.ThreadLocal
+new sun.java2d.pisces.Dasher$LengthIterator$Side
+new java.awt.geom.Line2D$Double
+new java.awt.image.Kernel
+newarray (org.apache.batik.ext.awt.image.rendered.TileBlock)[1]
+new org.apache.batik.ext.awt.image.rendered.TurbulencePatternRed$StitchInfo
+newarray (java.lang.Byte)[2]
+newarray (org.apache.batik.ext.awt.image.spi.MagicNumberRegistryEntry$MagicNumber)[1]
+new sun.font.EAttribute
+new java.awt.EventFilter$FilterAction
+new sun.awt.geom.Order0
+new java.util.ArrayList
+new sun.awt.X11.XBaseWindow$InitialiseState
+new org.apache.batik.ext.awt.image.codec.png.PNGEncodeParam$RGB
+new com.sun.imageio.plugins.jpeg.MarkerSegment
+new java.io.ByteArrayOutputStream
+new com.sun.imageio.plugins.jpeg.JPEGImageWriter$CallBackLock$State
+new java.awt.image.DataBufferByte
+new java.util.jar.Attributes$Name
+new org.apache.batik.bridge.RhinoInterpreterFactory
+new sun.awt.SunHints$Key
+new org.apache.batik.ext.awt.geom.ExtendedGeneralPath
+new java.util.zip.ZStreamRef
+newarray (org.mozilla.javascript.Interpreter$CallFrame)[1]
+new com.sun.imageio.plugins.jpeg.SOSMarkerSegment
+new org.mozilla.javascript.UintMap
+new sun.java2d.jules.TrapezoidList
+new org.apache.batik.ext.awt.image.spi.MagicNumberRegistryEntry$MagicNumber
+newarray (sun.font.EAttribute)[8]
+new java.lang.Byte
+new java.time.temporal.ChronoField
+new java.awt.image.BandedSampleModel
+new java.io.ByteArrayInputStream
+new org.apache.batik.extension.svg.BatikDomExtension
+newarray (java.io.ObjectStreamField)[3]
+new sun.text.SupplementaryCharacterData
+newarray (char[])[2]
+newarray (java.util.Map$Entry)[0]
+new sun.nio.fs.UnixPath
+newarray (org.apache.batik.css.engine.value.ValueManager)[0]
+new java.io.FileDescriptor
+new sun.util.locale.InternalLocaleBuilder$CaseInsensitiveChar
+new sun.awt.AppContext$State
+new java.util.Formatter$Flags
+new java.awt.image.MultiPixelPackedSampleModel
+new sun.awt.X11.XDragSourceProtocol$TargetWindowInfo
+new org.apache.batik.bridge.ViewBox$ViewHandler
+new java.lang.Long
+newarray (javax.imageio.plugins.jpeg.JPEGQTable)[$stack11]
+new org.apache.batik.ext.awt.image.ConcreteComponentTransferFunction
+new java.io.ObjectStreamField
+new java.lang.Integer
+new sun.java2d.pipe.Region
+new java.math.MathContext
+new sun.java2d.pisces.Curve
+newarray (java.net.URL)[0]
+new java.text.DateFormat$Field
+new sun.font.FontStrikeDesc
+newarray (java.awt.AWTKeyStroke)[0]
+new java.lang.StringBuilder
+newarray (org.apache.batik.ext.awt.geom.Segment)[1]
+new java.text.ParsePosition
+new java.awt.image.ComponentSampleModel
+new java.util.regex.Pattern$TreeInfo
+new sun.reflect.ReflectionFactory$GetReflectionFactoryAction
+new java.awt.geom.Path2D$Float
+new java.awt.font.TextAttribute
+new sun.awt.X11.XMotionEvent
+new com.sun.imageio.plugins.jpeg.SOSMarkerSegment$ScanComponentSpec
+new java.math.BigDecimal
+new sun.security.x509.UniqueIdentity
+new org.apache.batik.dom.svg.SVGOMTransform
+new sun.text.normalizer.NormalizerBase$QuickCheckResult
+new java.awt.Rectangle
+new sun.security.util.DerValue
+new java.awt.AlphaComposite
+new org.apache.batik.transcoder.keys.StringKey
+new java.awt.color.ICC_Profile
+new sun.nio.fs.UnixPath
+new java.awt.geom.Ellipse2D$Float
+newarray (javax.imageio.plugins.jpeg.JPEGHuffmanTable)[2]
+new org.apache.batik.ext.awt.geom.Cubic
+new sun.security.util.DerInputBuffer
+new java.util.concurrent.ConcurrentHashMap
+new sun.security.x509.IPAddressName
+newarray (java.lang.Object)[1]
+new sun.security.util.DerInputStream
+new org.apache.xpath.NodeSetDTM
+newarray (java.math.BigInteger)[1]
+new javax.imageio.plugins.jpeg.JPEGHuffmanTable
+new java.awt.BasicStroke
+new java.util.concurrent.ConcurrentLinkedQueue
+new org.apache.batik.extension.svg.BatikBridgeExtension
+new java.nio.charset.CoderResult
+newarray (java.lang.Class)[1]
+new org.apache.xml.utils.IntStack
+new sun.text.bidi.BidiBase$ImpTabPair
+new sun.nio.ch.FileDispatcherImpl
+new org.apache.batik.bridge.TextNode$Anchor
+new org.apache.batik.transcoder.keys.LengthKey
+new java.awt.image.PixelInterleavedSampleModel
+new java.util.LinkedList
+new sun.java2d.marlin.MarlinRenderingEngine$NormMode
+new com.sun.imageio.plugins.jpeg.DRIMarkerSegment
+new sun.java2d.pisces.PiscesRenderingEngine
+new sun.security.rsa.RSAUtil$KeyType
+new org.apache.batik.ext.awt.image.PadMode
+new sun.misc.FloatingDecimal$ExceptionalBinaryToASCIIBuffer
+new java.awt.geom.Point2D$Float
+newarray (long)[250]
+new java.nio.file.attribute.PosixFilePermission
+selective pta starts!
+[main] INFO qilin.core.PTA - [PTA] Points-to resolution: in 928.2 seconds.
+PTS relation:2373610
+VAR CNT:176283
+AVG PTS: 13.464769716875706
+PTS relation (no native):2371730
+VAR CNT (no native):176254
+AVG PTS (no native): 13.45631872184461
+#globals: 4128
+#locals: 147137
+#allocNodeNumberer: 55062
+#fieldRefNodeNumberer: 548078
+ ====== Memory Usage ======
+Used Memory Before:                               22 GB
+Free Memory Before:                               28 GB
+Total Memory Before:                              51 GB
+Max Memory Before:                                256 GB
+Analysis:                                         mahjong-2object+1heap
+Time (sec):                                       928.263
+Used Memory After:                                97 GB
+Free Memory After:                                20 GB
+Total Memory After:                               117 GB
+Max Memory After:                                 256 GB
+ ====== Yummy ======
+#Single-Call Methods:                             9941
+#Single-Receiver Methods:                         12223
+#Single-Call-Single-Receiver Methods:             7718
+ ====== Call Graph ======
+#Method (Static):                                 112105
+#Reachable Method (CI):                           25494
+	#Reachable-Static Method (CI):                   5331
+#Reachable Method (CS):                           700666
+#Reachable App Method (CI):                       7760
+	#Reachable-App-Static Method (CI):               749
+#Reachable App Method (CS):                       140215
+#Call Edge(CI):                                   134843
+	#Static-Static Call Edge(CI):                    7646
+	#Static-Instance Call Edge(CI):                  22890
+	#Instance-Static Call Edge(CI):                  9377
+	#Instance-Instance Call Edge(CI):                94930
+	#Application-Application Call Edge(CI):          36537
+	#Application-Library Call Edge(CI):              12937
+	#Library-Application Call Edge(CI):              794
+	#Library-Library Call Edge(CI):                  84578
+#Call Edge(CS):                                   128718001
+	#Static-Static Call Edge(CS):                    303798
+	#Static-Instance Call Edge(CS):                  40273843
+	#Instance-Static Call Edge(CS):                  149951
+	#Instance-Instance Call Edge(CS):                87990409
+	#Application-Application Call Edge(CS):          26126545
+	#Application-Library Call Edge(CS):              34588218
+	#Library-Application Call Edge(CS):              18662
+	#Library-Library Call Edge(CS):                  67984579
+#receivers:                                       1372649
+	#thisreceivers:                                  0
+#avg p2s size for virtualcalls:                   93.44286266918928
+ ====== Statements ======
+#Cast (Total):                                    5565
+#Cast (AppOnly):                                  2052
+#May Fail Cast (Total):                           2975
+#May Fail Cast (AppOnly):                         1151
+#Static Call Site(Total):                         16788
+#Virtual Call Site(Total):                        87418
+#Virtual Call Site(AppOnly):                      28932
+#Virtual Call Site(Polymorphic):                  6183
+#Virtual Call Site(Polymorphic AppOnly):          2942
+#Virtual Call Site(Unreachable):                  2583
+#Avg Poly Call Targets:                           6.163027656477438
+ ====== Nodes ======
+#Context:                                         700667
+#Avg Context per Method:                          27.48252598548735
+#Method with Throw Pointer-to:                    12724
+#Alloc Node(CI):                                  12648
+#Alloc Node(CS):                                  42413
+#Global CS Pointer-to Relation:                   20292
+#Local CS Pointer-to Relation:                    183540425
+#Field CS Pointer-to Relation:                    5086823
+#Global Pointer (lib + app):                      4128
+#Global Avg Points-To Target(CI):                 1.0593507751937985
+#Global Avg Points-To Target(CS):                 4.915697674418604
+#App Global Pointer:                              1255
+#App Global Avg Points-To Target(CI):             1.0486055776892431
+#App Global Avg Points-To Target(CS):             2.3171314741035856
+#Avg Points-to Target(CI):                        13.464769716875706
+#Avg Points-to Target without Native Var(CI):     13.45631872184461
+#Local Pointer (lib + app):                       147127
+#Local Avg Points-To Target(CI):                  12.032849171124267
+#Local Avg Points-To Target(CS):                  29.167685061205624
+#App Local Pointer:                               44514
+#App Local Avg Points-To Target(CI):              16.367345104910815
+#App Local Avg Points-To Target(CS):              37.41746416857618
+#Context Local Pointer (lib + app):               3698337
+#Context Local Avg Points-To Target(CI):          11.868039608072493
+#Context Local Avg Points-To Target(CS):          49.627825966103146
+#App Context Local Pointer:                       742662
+#App Context Local Avg Points-To Target(CI):      18.548852640905285
+#App Context Local Avg Points-To Target(CS):      57.77385270823066
+ ====== Assignments ======
+#Alloc-pag-edge:                                  18064908
+#Simple-pag-edge:                                 206290215
+	#Local-to-Local:                                 204158921
+	#Field-to-Local:                                 1494461
+	#Local-to-Field:                                 636833
+#Store-pag-edge:                                  247895
+#Load-pag-edge:                                   712921
+ ====== Classes ======
+#Class:                                           12627
+#Appclass:                                        2595
+#Libclass:                                        10022
+#Phantomclass:                                    10
+#Class(reachable):                                3873
+#Appclass(reachable):                             1336
+#Libclass(reachable):                             2536
+
+Main PTA (including pre-analysis) elapsed time: 1337.85s
+Main PTA consumed memory: 113383.92 MB

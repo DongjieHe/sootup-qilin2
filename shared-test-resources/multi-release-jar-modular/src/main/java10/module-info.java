@@ -1,0 +1,3 @@
+module multirelease {
+exports multirelease;
+}

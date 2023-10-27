@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+
+<project name="itext-5.0.3" basedir="." default="compile" xmlns:ivy="antlib:org.apache.ivy.ant"
+         xmlns:jacoco="antlib:org.jacoco.ant" xmlns:if="ant:if" xmlns:unless="ant:unless">
+    <description>
+        build file for the qualitas corpus analysis. project: itext-5.0.3
+    </description>
+    <property name="generated-tests-exist" value="true"/>
+    <target name="check_which_target_to_run">
+        <if>
+            <and>
+                <equals arg1="${which_target}" arg2="generated-tests"/>
+                <isset property="generated-tests-exist"/>
+            </and>
+            <then>
+                <antcall target="generated-tests"/>
+            </then>
+        </if>
+        <if>
+            <and>
+                <equals arg1="${which_target}" arg2="builtin-tests"/>
+                <isset property="builtin-tests-exist"/>
+            </and>
+            <then>
+                <antcall target="builtin-tests"/>
+            </then>
+        </if>
+        <if>
+            <equals arg1="${which_target}" arg2="all-tests"/>
+            <then>
+                <if>
+                    <not>
+                        <available file="${basedir}/.done"/>
+                    </not>
+                    <then>
+                        <antcall target="all-tests"/>
+                    </then>
+                    <else>
+                        <echo message="waring: skip ${ant.project.name}, run clean-all before tests to recompute all"/>
+                    </else>
+                </if>
+            </then>
+        </if>
+    </target>
+
+    <property name="project.dir" location="../project"/>
+    <property name="xcorpus.tools.dir" location="../../../../tools"/>
+
+    <property name="evosuite-tests.src.dir" location="${basedir}/evosuite-tests"/>
+
+    <property name="build.main.dir" location="${basedir}/build/main"/>
+    <property name="build.builtin-tests.dir" location="${basedir}/build/builtin-tests"/>
+    <property name="build.generated-tests.dir" location="${basedir}/build/generated-tests"/>
+
+    <property file="${xcorpus.tools.dir}/res/commons.properties"/>
+
+
+    <property name="libraries.default" value="${project.dir}/default-lib"/>
+    <property name="libraries.ivy" value="${basedir}/lib"/>
+
+    <!-- path that contains all libraries -->
+    <path id="lib.path">
+        <fileset dir="${libraries.default}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${libraries.ivy}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- class path that contains all compiled files -->
+    <path id="build.main.path">
+        <pathelement location="${build.main.dir}"/>
+    </path>
+
+    <!-- class path that contains all classes and libraries neccessary to compile and / or run the project -->
+    <path id="class.path">
+        <path refid="build.main.path"/>
+        <path refid="lib.path"/>
+    </path>
+
+    <!-- class path that contains the compiled test classes -->
+    <path id="build.builtin-tests.path">
+        <pathelement location="${build.test.dir}"/>
+    </path>
+
+    <path id="build.generated-tests.path">
+        <pathelement location="${build.generated-tests.dir}"/>
+    </path>
+
+    <!-- class path that contains all compiled files -->
+    <path id="evosuite.path">
+        <file name="${xcorpus.tools.dir}/lib/${evosuite.jar}"/>
+    </path>
+    <path id="junit.path">
+        <pathelement location="${xcorpus.tools.dir}/lib/${junit.jar}"/>
+        <pathelement location="${xcorpus.tools.dir}/lib/${hamcrest.jar}"/>
+    </path>
+
+    <path id="xcorpus.tools.path">
+        <pathelement location="${xcorpus.tools.dir}/build"/>
+    </path>
+
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="${xcorpus.tools.dir}/lib/${jacoco.jar}"/>
+    </taskdef>
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${xcorpus.tools.dir}/lib/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <!-- delete temporary data like .class files -->
+    <target name="clean">
+        <delete dir="${basedir}/build"/>
+        <delete dir="${libraries.ivy}"/>
+        <delete dir="${basedir}/output"/>
+        <delete dir="${basedir}/temp"/>
+
+        <delete includeemptydirs="true">
+            <fileset dir="${basedir}" includes="junitvm*, log*, jacoco.exec, coverage.ec" defaultexcludes="false"/>
+        </delete>
+
+        <ant antfile="${xcorpus.tools.dir}/build.xml" target="clean" useNativeBasedir="true"/>
+    </target>
+
+    <!-- ATTENTION: very costly to re-generate tests!! -->
+    <target name="clean-generated-tests">
+        <delete dir="${evosuite-tests.src.dir}"/>
+    </target>
+
+    <target name="clean-all">
+        <antcall target="clean"/>
+        <antcall target="clean-generated-tests"/>
+    </target>
+
+    <!-- generate timestamp variables in ant -->
+    <target name="timestamp">
+        <tstamp/>
+        <property name="coverage.dir" location="${basedir}/output"/>
+        <property name="test.report.dir" location="${coverage.dir}/junit-report"/>
+    </target>
+
+    <!-- create project architecture-->
+    <target name="makedir" depends="timestamp">
+        <mkdir dir="${build.main.dir}"/>
+        <mkdir dir="${build.generated-tests.dir}"/>
+        <mkdir dir="${libraries.ivy}"/>
+        <mkdir dir="${basedir}/temp"/>
+        <mkdir dir="${basedir}/evosuite-report"/>
+    </target>
+
+    <target name="generate-setup-file" depends="timestamp">
+        <filter token="NAME" value="${ant.project.name}"/>
+        <filter token="BUILD" value="${DSTAMP}"/>
+        <filter token="EXECUTABLES" value="${executables}"/>
+        <filter token="ANT" value="${ant.version}"/>
+        <filter token="JAVA" value="${ant.java.version}"/>
+        <filter token="EVOSUITE" value="${evosuite.jar}"/>
+        <filter token="JACOCO" value="${jacoco.jar}"/>
+
+        <delete dir="${coverage.dir}"/>
+        <mkdir dir="${coverage.dir}"/>
+        <copy if:true="${xcorpus.instrument}" file="${xcorpus.tools.dir}/res/report.dtd"
+              tofile="${coverage.dir}/report.dtd"/>
+        <copy file="${xcorpus.tools.dir}/res/setupTemplate.mf" tofile="${coverage.dir}/setup.mf" filtering="yes"/>
+    </target>
+
+    <!-- resolve ivy dependencies -->
+    <target name="resolve">
+        <ivy:retrieve type="jar,bundle" pattern="${libraries.ivy}/[artifact]-[revision].[ext]"/>
+    </target>
+
+    <!-- generate ivy dependencies report -->
+    <target name="report" depends="resolve">
+        <ivy:report todir="${build.main.dir}"/>
+    </target>
+
+    <!-- compile java classes -->
+    <target name="compile" depends="clean, makedir, resolve">
+        <unzip src="${project.dir}/bin.zip" dest="${build.main.dir}"/>
+    </target>
+
+    <target name="compile-tools">
+        <ant dir="${xcorpus.tools.dir}" target="compile"/>
+    </target>
+
+    <target name="update-evosuite-tests-archive">
+        <zip destfile="${basedir}/${evosuite.tests}.zip"
+             basedir="${evosuite-tests.src.dir}"
+        />
+    </target>
+
+    <target name="extract-evosuite-tests-archive">
+        <unzip src="${basedir}/${evosuite.tests}.zip" dest="${evosuite-tests.src.dir}"/>
+    </target>
+
+    <!-- Not to be called directly. This adds an adapter to the tests so that we can configure their behavior. -->
+    <target name="run.TestSuiteModificator" depends="compile-tools">
+        <java className="xcorpus.TestSuiteModificator">
+            <classpath>
+                <pathelement location="${xcorpus.tools.dir}/build"/>
+                <fileset dir="${xcorpus.tools.dir}/lib">
+                    <include name="${evosuite.jar}"/>
+                    <include name="jdom-2.0.6.jar"/>
+                    <include name="${junit.jar}"/>
+                    <include name="${hamcrest.jar}"/>
+                    <include name="velocity-1.7-dep.jar"/>
+                </fileset>
+            </classpath>
+
+            <arg value="${basedir}/../../"/>
+            <arg value="${ant.project.name}"/>
+        </java>
+    </target>
+
+    <target name="generate-single-test" depends="compile">
+        <sequential>
+            <delete file="${basedir}/evosuite-report/single/statistics.csv"/>
+
+            <java jar="${xcorpus.tools.dir}/lib/${evosuite.jar}" fork="true">
+                <arg value="-class"/>
+                <arg value="com.itextpdf.rups.view.itext.FormTree"/>
+                <arg value="-mem"/>
+                <arg value="${evosuite.mem}"/>
+                <arg value="-Dsearch_budget"/>
+                <arg value="${evosuite.search_budget}"/>
+                <arg value="-Djunit_check"/>
+                <arg value="${evosuite.junit_check}"/>
+                <arg value="-Duse_separate_classloader"/>
+                <arg value="${evosuite.use_separate_classloader}"/>
+                <arg value="-Dreport_dir"/>
+                <arg value="${basedir}/evosuite-report/single"/>
+                <arg value="-Dcriterion"/>
+                <arg value="${evosuite.criterion}"/>
+                <arg value="-Doutput_variables"/>
+                <arg value="${evosuite.output_variables}"/>
+            </java>
+
+            <antcall target="run.TestSuiteModificator"/>
+
+            <antcall target="update-evosuite-tests-archive"/>
+        </sequential>
+    </target>
+
+
+    <target name="generate-tests" depends="compile">
+        <sequential>
+            <record name="${basedir}/evosuite-log.txt" action="start"/>
+
+            <delete file="${basedir}/evosuite-report/statistics.csv"/>
+
+            <for list="rups,text" param="package">
+                <sequential>
+
+                    <java jar="${xcorpus.tools.dir}/lib/${evosuite.jar}" fork="true">
+                        <arg value="-prefix"/>
+                        <arg value="com.itextpdf.@{package}"/>
+                        <arg value="-mem"/>
+                        <arg value="${evosuite.mem}"/>
+                        <arg value="-Dsearch_budget"/>
+                        <arg value="${evosuite.search_budget}"/>
+                        <arg value="-Djunit_check"/>
+                        <arg value="${evosuite.junit_check}"/>
+                        <arg value="-Duse_separate_classloader"/>
+                        <arg value="${evosuite.use_separate_classloader}"/>
+                        <arg value="-Dreport_dir"/>
+                        <arg value="${basedir}/evosuite-report"/>
+                        <arg value="-Dcriterion"/>
+                        <arg value="${evosuite.criterion}"/>
+                        <arg value="-Doutput_variables"/>
+                        <arg value="${evosuite.output_variables}"/>
+                    </java>
+
+                </sequential>
+            </for>
+
+            <antcall target="run.TestSuiteModificator"/>
+
+            <antcall target="update-evosuite-tests-archive"/>
+
+            <record name="${basedir}/evosuite-log.txt" action="stop"/>
+        </sequential>
+    </target>
+
+    <!-- compile generated java tests -->
+    <target name="compile-generated-tests" depends="compile, compile-tools">
+        <antcall target="extract-evosuite-tests-archive"/>
+
+        <javac srcdir="${evosuite-tests.src.dir}" destdir="${build.generated-tests.dir}" includeantruntime="false">
+            <classpath refid="class.path"/>
+            <classpath refid="evosuite.path"/>
+            <classpath refid="xcorpus.tools.path"/>
+            <compilerarg line="${compiler_arg}"/>
+            <classpath refid="junit.path"/>
+        </javac>
+    </target>
+
+    <target name="generated-tests" depends="compile-generated-tests">
+        <antcall target="generate-setup-file" if:true="${xcorpus.instrument}">
+            <param name="executables" value="generated tests"/>
+        </antcall>
+
+        <record name="${basedir}/log.txt" action="start"/>
+        <mkdir dir="${test.report.dir}"/>
+
+
+        <junit dir="${basedir}/temp" timeout="${junit.timeout}" maxmemory="${junit.maxmemory}" printsummary="on"
+               haltonfailure="${xcorpus.haltOnFailure}" haltonerror="${xcorpus.haltOnError}" fork="true">
+            <jvmarg value="-Djava.awt.headless=${junit.headless}"/>
+
+            <classpath>
+                <path refid="class.path"/>
+                <path refid="junit.path"/>
+                <path refid="build.generated-tests.path"/>
+                <path refid="evosuite.path"/>
+                <path refid="xcorpus.tools.path"/>
+            </classpath>
+
+            <formatter type="xml"/>
+            <batchtest todir="${test.report.dir}" fork="true">
+                <fileset dir="${evosuite-tests.src.dir}">
+                    <include name="**/*_ESTest.java"/>
+                    <exclude
+                            name="**/OutlineTree_ESTest.java"/> <!-- Test does not stop (even no timeout), maybe better with new tests-->
+                    <exclude name="**/PdfReaderController_ESTest.java"/> <!-- "-" -->
+                    <exclude name="**/FormTree_ESTest.java"/> <!-- "-" -->
+                    <exclude name="**/RupsController_ESTest.java"/> <!-- "-" -->
+                    <exclude name="**/PagesTable_ESTest.java"/> <!-- "-" -->
+                    <exclude name="**/PdfObjectPanel_ESTest.java"/> <!-- "-" -->
+                    <exclude name="**/JTableAutoModel_ESTest.java"/> <!-- "-" -->
+                </fileset>
+            </batchtest>
+        </junit>
+
+
+        <record name="${basedir}/log.txt" action="stop"/>
+
+        <echo unless:true="${xcorpus.instrument}">no report is generated because instrumentation is deactivated</echo>
+
+        <delete dir="${basedir}/lib"/>
+        <delete dir="${basedir}/build"/>
+    </target>
+
+    <target name="all-tests" depends="compile-generated-tests">
+        <antcall target="generated-tests"/>
+        <touch file="${basedir}/.done"/>
+    </target>
+</project>

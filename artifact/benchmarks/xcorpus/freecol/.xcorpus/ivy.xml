@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+    <info organisation="MasseyUniversity" module="freecol-0.10.7"/>
+    <dependencies>
+
+        <dependency org="commons-cli" name="commons-cli" rev="1.1"/>
+        <dependency org="com.googlecode.soundlibs" name="vorbisspi" rev="1.0.3-1"/>
+
+    </dependencies>
+</ivy-module>
