@@ -322,7 +322,7 @@ public class Eagle {
       LocalVarNode mret =
           method.getReturnType() instanceof ReferenceType ? (LocalVarNode) srcnf.caseRet() : null;
       LocalVarNode throwFinal =
-          prePAG.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE, method.getParameterType(PointsToAnalysis.THROW_NODE)));
+          prePAG.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE));
       if (method.isStatic()) {
         pts.getOrDefault(thisRef, Collections.emptySet())
             .forEach(

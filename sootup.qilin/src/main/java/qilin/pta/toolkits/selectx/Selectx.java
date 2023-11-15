@@ -330,7 +330,7 @@ public class Selectx {
           }
           LocalVarNode stmtThrowNode = srcnf.makeInvokeStmtThrowVarNode(s, method);
           LocalVarNode throwFinal =
-              prePAG.findLocalVarNode(new Parm(tgtmtd, PointsToAnalysis.THROW_NODE, tgtmtd.getParameterType(PointsToAnalysis.THROW_NODE)));
+              prePAG.findLocalVarNode(new Parm(tgtmtd, PointsToAnalysis.THROW_NODE));
           if (throwFinal != null) {
             this.addExitEdge(throwFinal, stmtThrowNode, callSite);
           }

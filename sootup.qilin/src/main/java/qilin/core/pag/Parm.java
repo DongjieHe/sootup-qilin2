@@ -21,7 +21,6 @@ package qilin.core.pag;
 import java.util.Objects;
 import qilin.core.PointsToAnalysis;
 import sootup.core.model.SootMethod;
-import sootup.core.types.Type;
 
 /**
  * Represents a method parameter.
@@ -31,12 +30,10 @@ import sootup.core.types.Type;
 public class Parm {
   private final int index;
   private final SootMethod method;
-  private final Type type;
 
-  public Parm(SootMethod m, int i, Type type) {
+  public Parm(SootMethod m, int i) {
     index = i;
     method = m;
-    this.type = type;
   }
 
   public String toString() {

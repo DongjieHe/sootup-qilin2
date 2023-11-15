@@ -295,14 +295,14 @@ public class MethodNodeFactory {
         method.isStatic()
             ? PTAUtils.getClassType("java.lang.Object")
             : method.getDeclaringClassType();
-    VarNode ret = pag.makeLocalVarNode(new Parm(method, PointsToAnalysis.THIS_NODE, type), type, method);
+    VarNode ret = pag.makeLocalVarNode(new Parm(method, PointsToAnalysis.THIS_NODE), type, method);
     ret.setInterProcTarget();
     return ret;
   }
 
   public VarNode caseParm(int index) {
     VarNode ret =
-        pag.makeLocalVarNode(new Parm(method, index, method.getParameterType(index)), method.getParameterType(index), method);
+        pag.makeLocalVarNode(new Parm(method, index), method.getParameterType(index), method);
     ret.setInterProcTarget();
     return ret;
   }
@@ -310,7 +310,7 @@ public class MethodNodeFactory {
   public VarNode caseRet() {
     VarNode ret =
         pag.makeLocalVarNode(
-            new Parm(method, PointsToAnalysis.RETURN_NODE, method.getReturnType()), method.getReturnType(), method);
+            new Parm(method, PointsToAnalysis.RETURN_NODE), method.getReturnType(), method);
     ret.setInterProcSource();
     return ret;
   }
@@ -318,7 +318,7 @@ public class MethodNodeFactory {
   public VarNode caseMethodThrow() {
     VarNode ret =
         pag.makeLocalVarNode(
-            new Parm(method, PointsToAnalysis.THROW_NODE, PTAUtils.getClassType("java.lang.Throwable")),
+            new Parm(method, PointsToAnalysis.THROW_NODE),
             PTAUtils.getClassType("java.lang.Throwable"),
             method);
     ret.setInterProcSource();

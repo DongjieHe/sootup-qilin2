@@ -108,7 +108,7 @@ public abstract class AbstractPAG {
       LocalVarNode mret = (LocalVarNode) srcnf.caseRet();
       addReturnEdge(mret);
     }
-    Node throwNode = prePAG.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE, method.getParameterType(PointsToAnalysis.THROW_NODE)));
+    Node throwNode = prePAG.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE));
     if (throwNode != null) {
       addThrowEdge(throwNode);
     }
