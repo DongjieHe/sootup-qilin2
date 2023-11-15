@@ -65,19 +65,6 @@ public class Parm {
     return index == PointsToAnalysis.THROW_NODE;
   }
 
-  public Type getType() {
-    //    if (index == PointsToAnalysis.RETURN_NODE) {
-    //      return method.getReturnType();
-    //    } else if (index == PointsToAnalysis.THIS_NODE) {
-    //      return method.isStatic()
-    //          ? PTAUtils.getClassType("java.lang.Object")
-    //          : method.getDeclaringClassType();
-    //    }
-    //
-    //    return method.getParameterType(index);
-    return this.type;
-  }
-
   public SootMethod method() {
     return method;
   }
