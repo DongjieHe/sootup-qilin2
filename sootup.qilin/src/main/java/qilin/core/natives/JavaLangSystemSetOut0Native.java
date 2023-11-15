@@ -18,7 +18,8 @@
 
 package qilin.core.natives;
 
-import sootup.core.jimple.basic.Value;
+import sootup.core.jimple.basic.Local;
+import sootup.core.jimple.common.ref.JStaticFieldRef;
 import sootup.core.model.SootMethod;
 
 public class JavaLangSystemSetOut0Native extends NativeMethod {
@@ -33,8 +34,8 @@ public class JavaLangSystemSetOut0Native extends NativeMethod {
    * <p>private static native void setOut0(java.io.PrintStream);
    */
   protected void simulateImpl() {
-    Value r1 = getPara(0);
-    Value systemOut = getStaticFieldRef("java.lang.System", "out");
+    Local r1 = getPara(0);
+    JStaticFieldRef systemOut = getStaticFieldRef("java.lang.System", "out");
     addAssign(systemOut, r1);
   }
 }

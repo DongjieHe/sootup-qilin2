@@ -222,7 +222,7 @@ public abstract class AbstractMVFG {
       LocalVarNode mret = (LocalVarNode) srcnf.caseRet();
       addStoreEdge(mret, thisRef);
     }
-    LocalVarNode mThrow = pag.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE));
+    LocalVarNode mThrow = pag.findLocalVarNode(new Parm(method, PointsToAnalysis.THROW_NODE, method.getParameterType(PointsToAnalysis.THROW_NODE)));
     if (mThrow != null) {
       addStoreEdge(mThrow, thisRef);
     }

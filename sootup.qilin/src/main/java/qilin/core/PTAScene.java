@@ -36,6 +36,7 @@ import qilin.util.PTAUtils;
 import soot.jimple.toolkits.callgraph.CallGraph;
 import sootup.core.inputlocation.ClassLoadingOptions;
 import sootup.core.jimple.basic.Value;
+import sootup.core.jimple.common.ref.JStaticFieldRef;
 import sootup.core.model.SootClass;
 import sootup.core.model.SootField;
 import sootup.core.model.SootMethod;
@@ -173,7 +174,7 @@ public class PTAScene {
     return this.fakeMainFactory.getFakeMain();
   }
 
-  public Value getFieldCurrentThread() {
+  public JStaticFieldRef getFieldCurrentThread() {
     return this.fakeMainFactory.getFieldCurrentThread();
   }
 

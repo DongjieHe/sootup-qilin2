@@ -126,6 +126,7 @@ public abstract class JunitTests {
   protected void checkAssertions(PTA pta) {
     Set<IAssertion> aliasAssertionSet = AssertionsParser.retrieveQueryInfo(pta);
     for (IAssertion mAssert : aliasAssertionSet) {
+      System.out.println(mAssert.getClass());
       boolean answer = mAssert.check();
       System.out.println("Assertion is " + answer);
       assertTrue(answer);

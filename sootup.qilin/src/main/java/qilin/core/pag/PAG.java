@@ -32,12 +32,15 @@ import qilin.core.reflection.TamiflexModel;
 import qilin.parm.heapabst.HeapAbstractor;
 import qilin.util.DataFactory;
 import qilin.util.PTAUtils;
+import qilin.util.Pair;
 import soot.Context;
 import soot.MethodOrMethodContext;
 import soot.util.ArrayNumberer;
 import soot.util.queue.ChunkedQueue;
 import soot.util.queue.QueueReader;
+import sootup.core.graph.MutableStmtGraph;
 import sootup.core.jimple.Jimple;
+import sootup.core.jimple.basic.LValue;
 import sootup.core.jimple.basic.Local;
 import sootup.core.jimple.basic.StmtPositionInfo;
 import sootup.core.jimple.basic.Value;
@@ -46,6 +49,7 @@ import sootup.core.jimple.common.constant.IntConstant;
 import sootup.core.jimple.common.constant.StringConstant;
 import sootup.core.jimple.common.expr.AbstractInvokeExpr;
 import sootup.core.jimple.common.expr.JStaticInvokeExpr;
+import sootup.core.jimple.common.stmt.FallsThroughStmt;
 import sootup.core.jimple.common.stmt.JAssignStmt;
 import sootup.core.jimple.common.stmt.Stmt;
 import sootup.core.model.Body;
@@ -291,7 +295,12 @@ public class PAG {
 
   /** Finds the ValNode for the variable value, or returns null. */
   public ValNode findValNode(Object value) {
-    return valToValNode.get(value);
+    if (value instanceof Local local) {
+      Pair<Local, Type> localTypePair = new Pair<>(local, local.getType());
+      return valToValNode.get(localTypePair);
+    } else {
+      return valToValNode.get(value);
+    }
   }
 
   public AllocNode findAllocNode(Object obj) {
@@ -352,21 +361,29 @@ public class PAG {
 
   /** Finds or creates the LocalVarNode for the variable value, of type type. */
   public LocalVarNode makeLocalVarNode(Object value, Type type, SootMethod method) {
-    LocalVarNode ret = (LocalVarNode) valToValNode.get(value);
-    if (ret == null) {
-      valToValNode.put(value, ret = new LocalVarNode(value, type, method));
-      valNodeNumberer.add(ret);
-      if (value instanceof Local local) {
-        //                if (local.getNumber() == 0) {
-        //                    PTAScene.v().getLocalNumberer().add(local);
-        //                }
+    if (value instanceof Local local) {
+      Pair<Local, Type> localTypePair = new Pair<>(local, local.getType());
+      LocalVarNode ret = (LocalVarNode) valToValNode.get(localTypePair);
+      if (ret == null) {
+        valToValNode.put(localTypePair, ret = new LocalVarNode(local, type, method));
+        valNodeNumberer.add(ret);
         locals.add(local);
+      } else if (!(ret.getType().equals(type))) {
+        throw new RuntimeException(
+                "Value " + value + " of type " + type + " previously had type " + ret.getType());
       }
-    } else if (!(ret.getType().equals(type))) {
-      throw new RuntimeException(
-          "Value " + value + " of type " + type + " previously had type " + ret.getType());
+      return ret;
+    } else {
+      LocalVarNode ret = (LocalVarNode) valToValNode.get(value);
+      if (ret == null) {
+        valToValNode.put(value, ret = new LocalVarNode(value, type, method));
+        valNodeNumberer.add(ret);
+      } else if (!(ret.getType().equals(type))) {
+        throw new RuntimeException(
+            "Value " + value + " of type " + type + " previously had type " + ret.getType());
+      }
+      return ret;
     }
-    return ret;
   }
 
   /**
@@ -558,7 +575,7 @@ public class PAG {
               newUnits
                   .computeIfAbsent(s, k -> new HashSet<>())
                   .add(
-                      new JAssignStmt<>(
+                      new JAssignStmt(
                           localSrc, srcArr, StmtPositionInfo.createNoStmtPositionInfo()));
               srcArr = localSrc;
             }
@@ -573,13 +590,13 @@ public class PAG {
               newUnits
                   .computeIfAbsent(s, k -> new HashSet<>())
                   .add(
-                      new JAssignStmt<>(
+                      new JAssignStmt(
                           localDst, dstArr, StmtPositionInfo.createNoStmtPositionInfo()));
               dstArr = localDst;
             }
             Value src =
                 JavaJimple.getInstance().newArrayRef((Local) srcArr, IntConstant.getInstance(0));
-            Value dst =
+            LValue dst =
                 JavaJimple.getInstance().newArrayRef((Local) dstArr, IntConstant.getInstance(0));
             Local local =
                 Jimple.newLocal(
@@ -587,18 +604,19 @@ public class PAG {
             builder.addLocal(local);
             newUnits
                 .computeIfAbsent(s, k -> DataFactory.createSet())
-                .add(new JAssignStmt<>(local, src, StmtPositionInfo.createNoStmtPositionInfo()));
+                .add(new JAssignStmt(local, src, StmtPositionInfo.createNoStmtPositionInfo()));
             newUnits
                 .computeIfAbsent(s, k -> DataFactory.createSet())
-                .add(new JAssignStmt<>(dst, local, StmtPositionInfo.createNoStmtPositionInfo()));
+                .add(new JAssignStmt(dst, local, StmtPositionInfo.createNoStmtPositionInfo()));
           }
         }
       }
     }
 
+    final MutableStmtGraph stmtGraph = builder.getStmtGraph();
     for (Stmt unit : newUnits.keySet()) {
       for (Stmt succ : newUnits.get(unit)) {
-        builder.addFlow(unit, succ);
+        stmtGraph.putEdge((FallsThroughStmt) unit, succ);
       }
     }
     PTAUtils.updateMethodBody(method, builder.build());

@@ -650,7 +650,7 @@ public final class PTAUtils {
 
   public static boolean isPrimitiveArrayType(Type type) {
     if (type instanceof ArrayType arrayType) {
-      return arrayType.getArrayElementType() instanceof PrimitiveType;
+      return arrayType.getElementType() instanceof PrimitiveType;
     }
     return false;
   }
@@ -754,7 +754,7 @@ public final class PTAUtils {
       if (m.isConcrete()) {
         body = m.getBody();
       } else {
-        body = Body.builder().build();
+        body = Body.builder().setMethodSignature(m.getSignature()).build();
       }
       methodToBody.putIfAbsent(m, body);
     }

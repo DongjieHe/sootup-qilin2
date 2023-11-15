@@ -21,10 +21,26 @@
 
     <dependencies>
         <dependency>
-	        <groupId>com.github.soot-oss.SootUp</groupId>
-	        <artifactId>sootup</artifactId>
-	        <version>develop-SNAPSHOT</version>
-	    </dependency>
+            <groupId>com.github.soot-oss.SootUp</groupId>
+            <artifactId>sootup.analysis</artifactId>
+            <version>develop-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.soot-oss.SootUp</groupId>
+            <artifactId>sootup.callgraph</artifactId>
+            <version>develop-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.soot-oss.SootUp</groupId>
+            <artifactId>sootup.core</artifactId>
+            <version>develop-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.soot-oss.SootUp</groupId>
+            <artifactId>sootup.java.bytecode</artifactId>
+            <version>develop-SNAPSHOT</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <dependency>
             <groupId>commons-cli</groupId>

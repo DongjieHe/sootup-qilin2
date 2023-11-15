@@ -23,16 +23,11 @@ import java.util.Arrays;
 import java.util.List;
 import qilin.util.PTAUtils;
 import sootup.core.jimple.Jimple;
-import sootup.core.jimple.basic.Immediate;
-import sootup.core.jimple.basic.Local;
-import sootup.core.jimple.basic.StmtPositionInfo;
-import sootup.core.jimple.basic.Value;
+import sootup.core.jimple.basic.*;
 import sootup.core.jimple.common.constant.IntConstant;
 import sootup.core.jimple.common.expr.AbstractInvokeExpr;
 import sootup.core.jimple.common.expr.JNewExpr;
-import sootup.core.jimple.common.ref.IdentityRef;
-import sootup.core.jimple.common.ref.JParameterRef;
-import sootup.core.jimple.common.ref.JThisRef;
+import sootup.core.jimple.common.ref.*;
 import sootup.core.jimple.common.stmt.Stmt;
 import sootup.core.model.Body;
 import sootup.core.model.SootClass;
@@ -104,7 +99,7 @@ public abstract class ArtificialMethod {
     return local;
   }
 
-  protected Immediate getNewArray(ClassType type) {
+  protected Local getNewArray(ClassType type) {
     Value newExpr = JavaJimple.getInstance().newNewArrayExpr(type, IntConstant.getInstance(1));
     Local local = getNextLocal(new ArrayType(type, 1));
     addAssign(local, newExpr);
@@ -126,14 +121,14 @@ public abstract class ArtificialMethod {
     stmtList.add(stmt);
   }
 
-  protected Value getStaticFieldRef(String className, String name) {
+  protected JStaticFieldRef getStaticFieldRef(String className, String name) {
     ClassType classType = PTAUtils.getClassType(className);
     SootClass sc = (SootClass) view.getClass(classType).get();
     SootField field = (SootField) sc.getField(name).get();
     return Jimple.newStaticFieldRef(field.getSignature());
   }
 
-  protected Value getArrayRef(Value base) {
+  protected JArrayRef getArrayRef(Value base) {
     return JavaJimple.getInstance().newArrayRef((Local) base, IntConstant.getInstance(0));
   }
 
@@ -189,12 +184,12 @@ public abstract class ArtificialMethod {
   protected Value getInvoke(String sig, Immediate... args) {
     MethodSignature methodSig = JavaIdentifierFactory.getInstance().parseMethodSignature(sig);
     List<Immediate> argsL = Arrays.asList(args);
-    Value rx = getNextLocal(methodSig.getType());
+    LValue rx = getNextLocal(methodSig.getType());
     addAssign(rx, Jimple.newStaticInvokeExpr(methodSig, argsL));
     return rx;
   }
 
-  protected void addAssign(Value lValue, Value rValue) {
+  protected void addAssign(LValue lValue, Value rValue) {
     Stmt stmt = Jimple.newAssignStmt(lValue, rValue, StmtPositionInfo.createNoStmtPositionInfo());
     stmtList.add(stmt);
   }

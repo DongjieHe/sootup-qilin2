@@ -25,6 +25,7 @@ import qilin.CoreConfig;
 import qilin.core.PTAScene;
 import qilin.core.PointsToAnalysis;
 import qilin.core.pag.*;
+import qilin.core.pag.Field;
 import qilin.util.PTAUtils;
 import qilin.util.Pair;
 import sootup.core.jimple.basic.Immediate;
@@ -54,10 +55,7 @@ import sootup.core.jimple.common.stmt.JThrowStmt;
 import sootup.core.jimple.common.stmt.Stmt;
 import sootup.core.jimple.javabytecode.stmt.JExitMonitorStmt;
 import sootup.core.jimple.visitor.AbstractStmtVisitor;
-import sootup.core.model.Modifier;
-import sootup.core.model.SootClass;
-import sootup.core.model.SootField;
-import sootup.core.model.SootMethod;
+import sootup.core.model.*;
 import sootup.core.signatures.FieldSignature;
 import sootup.core.types.ArrayType;
 import sootup.core.types.ClassType;
@@ -161,7 +159,7 @@ public class MethodNodeFactory {
     s.accept(
         new AbstractStmtVisitor<>() {
           @Override
-          public void caseAssignStmt(@Nonnull JAssignStmt<?, ?> stmt) {
+          public void caseAssignStmt(@Nonnull JAssignStmt stmt) {
             Value l = stmt.getLeftOp();
             Value r = stmt.getRightOp();
             if (l instanceof JStaticFieldRef) {
@@ -190,7 +188,7 @@ public class MethodNodeFactory {
           }
 
           @Override
-          public void caseIdentityStmt(@Nonnull JIdentityStmt<?> stmt) {
+          public void caseIdentityStmt(@Nonnull JIdentityStmt stmt) {
             if (!(stmt.getLeftOp().getType() instanceof ReferenceType)) {
               return;
             }
@@ -243,7 +241,7 @@ public class MethodNodeFactory {
       sf =
           new SootField(
               fieldSig,
-              Collections.singleton(Modifier.PUBLIC),
+              Collections.singleton(FieldModifier.PUBLIC),
               NoPositionInformation.getInstance());
       System.out.println("Warnning:" + ifr + " is resolved to be a null field in Scene.");
     } else {
@@ -258,12 +256,12 @@ public class MethodNodeFactory {
     int pos = 0;
     AllocNode prevAn =
         pag.makeAllocNode(
-            JavaJimple.getInstance().newNewArrayExpr(type, nmae.getSize(pos)), type, method);
+            JavaJimple.getInstance().newNewArrayExpr(type, (Immediate) nmae.getSize(pos)), type, method);
     VarNode prevVn = pag.makeLocalVarNode(prevAn.getNewExpr(), prevAn.getType(), method);
     mpag.addInternalEdge(prevAn, prevVn); // new
     VarNode ret = prevVn;
     while (true) {
-      Type t = type.getArrayElementType();
+      Type t = type.getElementType();
       if (!(t instanceof ArrayType)) {
         break;
       }
@@ -271,7 +269,7 @@ public class MethodNodeFactory {
       ++pos;
       Immediate sizeVal;
       if (pos < nmae.getSizeCount()) {
-        sizeVal = nmae.getSize(pos);
+        sizeVal = (Immediate) nmae.getSize(pos);
       } else {
         sizeVal = IntConstant.getInstance(1);
       }
@@ -297,14 +295,14 @@ public class MethodNodeFactory {
         method.isStatic()
             ? PTAUtils.getClassType("java.lang.Object")
             : method.getDeclaringClassType();
-    VarNode ret = pag.makeLocalVarNode(new Parm(method, PointsToAnalysis.THIS_NODE), type, method);
+    VarNode ret = pag.makeLocalVarNode(new Parm(method, PointsToAnalysis.THIS_NODE, type), type, method);
     ret.setInterProcTarget();
     return ret;
   }
 
   public VarNode caseParm(int index) {
     VarNode ret =
-        pag.makeLocalVarNode(new Parm(method, index), method.getParameterType(index), method);
+        pag.makeLocalVarNode(new Parm(method, index, method.getParameterType(index)), method.getParameterType(index), method);
     ret.setInterProcTarget();
     return ret;
   }
@@ -312,7 +310,7 @@ public class MethodNodeFactory {
   public VarNode caseRet() {
     VarNode ret =
         pag.makeLocalVarNode(
-            new Parm(method, PointsToAnalysis.RETURN_NODE), method.getReturnType(), method);
+            new Parm(method, PointsToAnalysis.RETURN_NODE, method.getReturnType()), method.getReturnType(), method);
     ret.setInterProcSource();
     return ret;
   }
@@ -320,7 +318,7 @@ public class MethodNodeFactory {
   public VarNode caseMethodThrow() {
     VarNode ret =
         pag.makeLocalVarNode(
-            new Parm(method, PointsToAnalysis.THROW_NODE),
+            new Parm(method, PointsToAnalysis.THROW_NODE, PTAUtils.getClassType("java.lang.Throwable")),
             PTAUtils.getClassType("java.lang.Throwable"),
             method);
     ret.setInterProcSource();

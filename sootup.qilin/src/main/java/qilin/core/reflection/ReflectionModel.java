@@ -25,7 +25,9 @@ import java.util.Map;
 import qilin.core.PTAScene;
 import qilin.util.DataFactory;
 import qilin.util.PTAUtils;
+import sootup.core.graph.MutableStmtGraph;
 import sootup.core.jimple.common.expr.AbstractInvokeExpr;
+import sootup.core.jimple.common.stmt.FallsThroughStmt;
 import sootup.core.jimple.common.stmt.Stmt;
 import sootup.core.model.Body;
 import sootup.core.model.SootMethod;
@@ -97,9 +99,10 @@ public abstract class ReflectionModel {
       }
     }
     Body.BodyBuilder builder = Body.builder(body, Collections.emptySet());
+    final MutableStmtGraph stmtGraph = builder.getStmtGraph();
     for (Stmt unit : newUnits.keySet()) {
       for (Stmt succ : newUnits.get(unit)) {
-        builder.addFlow(unit, succ);
+        stmtGraph.putEdge((FallsThroughStmt) unit, succ);
       }
     }
     PTAUtils.updateMethodBody(m, builder.build());
