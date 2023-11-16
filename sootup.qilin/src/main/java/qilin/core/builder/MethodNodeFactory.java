@@ -247,8 +247,8 @@ public class MethodNodeFactory {
     } else {
       sf = osf.get();
     }
-    return pag.makeFieldRefNode(
-        pag.makeLocalVarNode(ifr.getBase(), ifr.getBase().getType(), method), new Field(sf));
+    Local base = ifr.getBase();
+    return pag.makeFieldRefNode(pag.makeLocalVarNode(base, base.getType(), method), new Field(sf));
   }
 
   private VarNode caseNewMultiArrayExpr(JNewMultiArrayExpr nmae) {

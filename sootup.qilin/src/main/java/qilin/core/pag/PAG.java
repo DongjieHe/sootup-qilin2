@@ -29,7 +29,6 @@ import qilin.core.natives.NativeMethodDriver;
 import qilin.core.reflection.NopReflectionModel;
 import qilin.core.reflection.ReflectionModel;
 import qilin.core.reflection.TamiflexModel;
-import qilin.parm.heapabst.HeapAbstractor;
 import qilin.util.DataFactory;
 import qilin.util.PTAUtils;
 import qilin.util.Pair;
@@ -345,6 +344,7 @@ public class PAG {
 
   /** Finds or creates the GlobalVarNode for the variable value, of type type. */
   public GlobalVarNode makeGlobalVarNode(Object value, Type type) {
+    // value could only be a StringConstant, ClassConstant, or SootField.
     GlobalVarNode ret = (GlobalVarNode) valToValNode.get(value);
     if (ret == null) {
       ret =
@@ -447,10 +447,6 @@ public class PAG {
 
   public Map<MethodPAG, Set<Context>> getMethod2ContextsMap() {
     return addedContexts;
-  }
-
-  public boolean containsMethodPAG(SootMethod m) {
-    return methodToPag.containsKey(m);
   }
 
   public Collection<ContextField> getContextFields() {
@@ -621,14 +617,6 @@ public class PAG {
       }
     }
     PTAUtils.updateMethodBody(method, builder.build());
-  }
-
-  public LocalVarNode makeInvokeStmtThrowVarNode(Stmt invoke, SootMethod method) {
-    return makeLocalVarNode(invoke, PTAUtils.getClassType("java.lang.Throwable"), method);
-  }
-
-  public HeapAbstractor heapAbstractor() {
-    return pta.heapAbstractor();
   }
 
   public void resetPointsToSet() {
