@@ -89,7 +89,7 @@ public class FakeMainFactory extends ArtificialMethod {
 
     MethodSignature methodSignatureOne =
         view.getIdentifierFactory()
-            .getMethodSignature("main", className, "void", Collections.emptyList());
+            .getMethodSignature(className, "main", "void", Collections.emptyList());
 
     StmtPositionInfo noPosInfo = StmtPositionInfo.createNoStmtPositionInfo();
     final JReturnVoidStmt returnVoidStmt = new JReturnVoidStmt(noPosInfo);

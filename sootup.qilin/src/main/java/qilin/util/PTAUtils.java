@@ -67,6 +67,7 @@ import sootup.core.types.NullType;
 import sootup.core.types.PrimitiveType;
 import sootup.core.types.Type;
 import sootup.core.util.printer.JimplePrinter;
+import sootup.core.views.View;
 import sootup.java.core.JavaIdentifierFactory;
 
 public final class PTAUtils {
@@ -81,8 +82,13 @@ public final class PTAUtils {
 
   public static boolean isApplicationMethod(SootMethod sm) {
     ClassType classType = sm.getDeclaringClassType();
-    SootClass sc = (SootClass) PTAScene.v().getView().getClass(classType).get();
-    return sc.isApplicationClass();
+    View view = PTAScene.v().getView();
+    Optional<SootClass> osc = view.getClass(classType);
+    if (osc.isPresent()) {
+      return osc.get().isApplicationClass();
+    } else {
+      return false;
+    }
   }
 
   public static boolean isStaticInitializer(SootMethod method) {
@@ -336,7 +342,7 @@ public final class PTAUtils {
         SootClass clz = null;
         if (vn instanceof LocalVarNode) {
           SootMethod sm = ((LocalVarNode) vn).getMethod();
-          if (sm != null) {
+          if (sm != null && !sm.getSignature().toString().equals("<qilin.pta.FakeMain: void main()>")) {
             clz = (SootClass) PTAScene.v().getView().getClass(sm.getDeclaringClassType()).get();
           }
         } else if (vn instanceof GlobalVarNode gvn) {
