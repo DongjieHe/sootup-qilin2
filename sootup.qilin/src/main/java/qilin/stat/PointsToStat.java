@@ -25,6 +25,7 @@ import qilin.core.builder.MethodNodeFactory;
 import qilin.core.pag.*;
 import qilin.core.sets.PointsToSet;
 import qilin.util.PTAUtils;
+import qilin.util.Triple;
 import soot.Context;
 import sootup.core.jimple.basic.Local;
 import sootup.core.model.SootField;
@@ -131,8 +132,9 @@ public class PointsToStat implements AbstractStat {
       }
     }
     // locals exclude Exceptions
-    for (Local local : pag.getLocalPointers()) {
+    for (Triple<SootMethod, Local, Type> localTriple : pag.getLocalPointers()) {
       try {
+        Local local = localTriple.getSecond();
         Collection<VarNode> varNodes = pag.getVarNodes(local);
         LocalVarNode lvn = pag.findLocalVarNode(local);
         if (local.toString().contains("intermediate/")) {
@@ -153,7 +155,7 @@ public class PointsToStat implements AbstractStat {
           appLocalPointersCs += varNodes.size();
         }
 
-        PointsToSet pts = pta.reachingObjects(local);
+        PointsToSet pts = pta.reachingObjects(localTriple.getFirst(), local);
         final Set<Object> allocSites = getPointsToNewExpr(pts);
 
         totalLocalCiToCi += allocSites.size();

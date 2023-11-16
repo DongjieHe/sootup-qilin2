@@ -120,7 +120,7 @@ public abstract class PTA implements PointsToAnalysis {
 
   /** Returns the set of objects pointed to by variable l. */
   @Override
-  public PointsToSet reachingObjects(Local l) {
+  public PointsToSet reachingObjects(SootMethod m, Local l) {
     // find all context nodes, and collect their answers
     final PointsToSetInternal ret = new HybridPointsToSet();
     pag.getVarNodes(l)
@@ -166,7 +166,7 @@ public abstract class PTA implements PointsToAnalysis {
 
   /** Returns the set of objects pointed to by variable l in context c. */
   @Override
-  public PointsToSet reachingObjects(Context c, Local l) {
+  public PointsToSet reachingObjects(Context c, SootMethod m, Local l) {
     VarNode n = pag.findContextVarNode(l, c);
     PointsToSetInternal pts;
     if (n == null) {
@@ -179,8 +179,8 @@ public abstract class PTA implements PointsToAnalysis {
 
   /** Returns the set of objects pointed to by instance field f of the objects pointed to by l. */
   @Override
-  public PointsToSet reachingObjects(Local l, SootField f) {
-    return reachingObjects(reachingObjects(l), f);
+  public PointsToSet reachingObjects(SootMethod m, Local l, SootField f) {
+    return reachingObjects(reachingObjects(m, l), f);
   }
 
   /**
@@ -199,8 +199,8 @@ public abstract class PTA implements PointsToAnalysis {
    * context c.
    */
   @Override
-  public PointsToSet reachingObjects(Context c, Local l, SootField f) {
-    return reachingObjects(reachingObjects(c, l), f);
+  public PointsToSet reachingObjects(Context c, SootMethod m, Local l, SootField f) {
+    return reachingObjects(reachingObjects(c, m, l), f);
   }
 
   @Override
@@ -255,12 +255,5 @@ public abstract class PTA implements PointsToAnalysis {
               }
             });
     return new UnmodifiablePointsToSet(this, ret);
-  }
-
-  @Override
-  public boolean mayAlias(Local l1, Local l2) {
-    PointsToSet pts1 = reachingObjects(l1).toCIPointsToSet();
-    PointsToSet pts2 = reachingObjects(l2).toCIPointsToSet();
-    return pts1.hasNonEmptyIntersection(pts2);
   }
 }

@@ -33,6 +33,7 @@ import qilin.parm.heapabst.HeapAbstractor;
 import qilin.util.DataFactory;
 import qilin.util.PTAUtils;
 import qilin.util.Pair;
+import qilin.util.Triple;
 import soot.Context;
 import soot.MethodOrMethodContext;
 import soot.util.ArrayNumberer;
@@ -86,7 +87,7 @@ public class PAG {
   protected final Map<Object, ValNode> valToValNode;
   protected final Map<SootMethod, MethodPAG> methodToPag;
   protected final Set<SootField> globals;
-  protected final Set<Local> locals;
+  protected final Set<Triple<SootMethod, Local, Type>> locals;
   // ==========================outer objects==============================
   protected ChunkedQueue<Node> edgeQueue;
 
@@ -289,7 +290,7 @@ public class PAG {
     return globals;
   }
 
-  public Set<Local> getLocalPointers() {
+  public Set<Triple<SootMethod, Local, Type>> getLocalPointers() {
     return locals;
   }
 
@@ -362,15 +363,15 @@ public class PAG {
   /** Finds or creates the LocalVarNode for the variable value, of type type. */
   public LocalVarNode makeLocalVarNode(Object value, Type type, SootMethod method) {
     if (value instanceof Local local) {
-      Pair<Local, Type> localTypePair = new Pair<>(local, local.getType());
-      LocalVarNode ret = (LocalVarNode) valToValNode.get(localTypePair);
+      Triple<SootMethod, Local, Type> localTriple = new Triple<>(method, local, local.getType());
+      LocalVarNode ret = (LocalVarNode) valToValNode.get(localTriple);
       if (ret == null) {
-        valToValNode.put(localTypePair, ret = new LocalVarNode(local, type, method));
+        valToValNode.put(localTriple, ret = new LocalVarNode(local, type, method));
         valNodeNumberer.add(ret);
-        locals.add(local);
+        locals.add(localTriple);
       } else if (!(ret.getType().equals(type))) {
         throw new RuntimeException(
-                "Value " + value + " of type " + type + " previously had type " + ret.getType());
+            "Value " + value + " of type " + type + " previously had type " + ret.getType());
       }
       return ret;
     } else {

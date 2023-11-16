@@ -256,7 +256,9 @@ public class MethodNodeFactory {
     int pos = 0;
     AllocNode prevAn =
         pag.makeAllocNode(
-            JavaJimple.getInstance().newNewArrayExpr(type, (Immediate) nmae.getSize(pos)), type, method);
+            JavaJimple.getInstance().newNewArrayExpr(type, (Immediate) nmae.getSize(pos)),
+            type,
+            method);
     VarNode prevVn = pag.makeLocalVarNode(prevAn.getNewExpr(), prevAn.getType(), method);
     mpag.addInternalEdge(prevAn, prevVn); // new
     VarNode ret = prevVn;

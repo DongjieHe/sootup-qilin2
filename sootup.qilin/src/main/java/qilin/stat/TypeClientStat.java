@@ -123,7 +123,7 @@ public class TypeClientStat implements AbstractStat {
               appCasts++;
             }
             boolean fails = false;
-            Collection<AllocNode> pts = pta.reachingObjects((Local) v).toCollection();
+            Collection<AllocNode> pts = pta.reachingObjects(sm, (Local) v).toCollection();
             for (AllocNode n : pts) {
               if (fails) {
                 break;

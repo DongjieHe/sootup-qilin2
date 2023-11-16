@@ -659,7 +659,8 @@ public final class PTAUtils {
   public static void writeJimple(String parentDir, SootClass clz) {
     PackageName pkgName = clz.getType().getPackageName();
     String clzName = clz.getType().getClassName();
-    File packageDirectory = new File(
+    File packageDirectory =
+        new File(
             parentDir + File.separator + pkgName.getPackageName().replace(".", File.separator));
 
     try {

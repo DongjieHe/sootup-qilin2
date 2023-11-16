@@ -87,23 +87,23 @@ public class AliasAssertion implements IAssertion {
       if (!PTAConfig.v().getPtaConfig().stringConstants) {
         s = "STRING_NODE";
       }
-      PointsToSet pts = pta.reachingObjects((Local) vb).toCIPointsToSet();
+      PointsToSet pts = pta.reachingObjects(sm, (Local) vb).toCIPointsToSet();
       return pts.possibleStringConstants().contains(s);
     } else if (vb instanceof StringConstant strConst) {
       String s = strConst.getValue();
       if (!PTAConfig.v().getPtaConfig().stringConstants) {
         s = "STRING_NODE";
       }
-      PointsToSet pts = pta.reachingObjects((Local) va).toCIPointsToSet();
+      PointsToSet pts = pta.reachingObjects(sm, (Local) va).toCIPointsToSet();
       return pts.possibleStringConstants().contains(s);
     } else if (va instanceof ClassConstant) {
-      PointsToSet pts = pta.reachingObjects((Local) vb).toCIPointsToSet();
+      PointsToSet pts = pta.reachingObjects(sm, (Local) vb).toCIPointsToSet();
       return pts.possibleClassConstants().contains(va);
     } else if (vb instanceof ClassConstant) {
-      PointsToSet pts = pta.reachingObjects((Local) va).toCIPointsToSet();
+      PointsToSet pts = pta.reachingObjects(sm, (Local) va).toCIPointsToSet();
       return pts.possibleClassConstants().contains(vb);
     }
-    PointsToSet pts1 = pta.reachingObjects((Local) va).toCIPointsToSet();
+    PointsToSet pts1 = pta.reachingObjects(sm, (Local) va).toCIPointsToSet();
     if (DEBUG) {
       System.out.println(
           "va points to: "
@@ -111,7 +111,7 @@ public class AliasAssertion implements IAssertion {
               + pta.getPag().findLocalVarNode(va));
       PTAUtils.printPts(pta, pts1);
     }
-    PointsToSet pts2 = pta.reachingObjects((Local) vb).toCIPointsToSet();
+    PointsToSet pts2 = pta.reachingObjects(sm, (Local) vb).toCIPointsToSet();
     if (DEBUG) {
       System.out.println(
           "vb points to: "
