@@ -362,8 +362,7 @@ public class MethodNodeFactory {
         pag.makeGlobalVarNode(sc, PTAUtils.getClassType("java.lang.String"));
     mpag.addInternalEdge(stringConstantNode, stringConstantVar);
     VarNode vn =
-        pag.makeLocalVarNode(
-            new Pair<>(method, sc), PTAUtils.getClassType("java.lang.String"), method);
+        pag.makeLocalVarNode(sc, PTAUtils.getClassType("java.lang.String"), method);
     mpag.addInternalEdge(stringConstantVar, vn);
     return vn;
   }
@@ -376,9 +375,7 @@ public class MethodNodeFactory {
     AllocNode classConstant = pag.makeClassConstantNode(cc);
     VarNode classConstantVar = pag.makeGlobalVarNode(cc, PTAUtils.getClassType("java.lang.Class"));
     mpag.addInternalEdge(classConstant, classConstantVar);
-    VarNode vn =
-        pag.makeLocalVarNode(
-            new Pair<>(method, cc), PTAUtils.getClassType("java.lang.Class"), method);
+    VarNode vn = pag.makeLocalVarNode(cc, PTAUtils.getClassType("java.lang.Class"), method);
     mpag.addInternalEdge(classConstantVar, vn);
     return vn;
   }

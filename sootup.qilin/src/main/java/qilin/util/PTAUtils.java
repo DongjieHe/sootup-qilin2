@@ -46,6 +46,7 @@ import soot.util.dot.DotGraphConstants;
 import soot.util.dot.DotGraphNode;
 import soot.util.queue.ChunkedQueue;
 import soot.util.queue.QueueReader;
+import sootup.core.jimple.basic.Local;
 import sootup.core.jimple.basic.Value;
 import sootup.core.jimple.common.constant.IntConstant;
 import sootup.core.jimple.common.expr.AbstractInstanceInvokeExpr;
@@ -784,7 +785,8 @@ public final class PTAUtils {
     LocalVarNode thisRef = (LocalVarNode) srcnf.caseThis();
     LocalVarNode receiver;
     if (ie instanceof AbstractInstanceInvokeExpr iie) {
-      receiver = pag.findLocalVarNode(iie.getBase());
+      Local base = iie.getBase();
+      receiver = pag.findLocalVarNode(srcmpag.getMethod(), base, base.getType());
     } else {
       // static call
       receiver = thisRef;
@@ -806,7 +808,7 @@ public final class PTAUtils {
     if (arg == null) {
       return null;
     } else {
-      return pag.findLocalVarNode(arg);
+      return pag.findLocalVarNode(srcmpag.getMethod(), arg, arg.getType());
     }
   }
 

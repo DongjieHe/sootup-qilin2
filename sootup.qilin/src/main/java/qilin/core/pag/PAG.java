@@ -362,29 +362,19 @@ public class PAG {
 
   /** Finds or creates the LocalVarNode for the variable value, of type type. */
   public LocalVarNode makeLocalVarNode(Object value, Type type, SootMethod method) {
-    if (value instanceof Local local) {
-      Triple<SootMethod, Local, Type> localTriple = new Triple<>(method, local, local.getType());
-      LocalVarNode ret = (LocalVarNode) valToValNode.get(localTriple);
-      if (ret == null) {
-        valToValNode.put(localTriple, ret = new LocalVarNode(local, type, method));
-        valNodeNumberer.add(ret);
-        locals.add(localTriple);
-      } else if (!(ret.getType().equals(type))) {
-        throw new RuntimeException(
-            "Value " + value + " of type " + type + " previously had type " + ret.getType());
+    Triple<SootMethod, Object, Type> localTriple = new Triple<>(method, value, type);
+    LocalVarNode ret = (LocalVarNode) valToValNode.get(localTriple);
+    if (ret == null) {
+      valToValNode.put(localTriple, ret = new LocalVarNode(value, type, method));
+      valNodeNumberer.add(ret);
+      if (value instanceof Local local) {
+        locals.add(new Triple<>(method, local, type));
       }
-      return ret;
-    } else {
-      LocalVarNode ret = (LocalVarNode) valToValNode.get(value);
-      if (ret == null) {
-        valToValNode.put(value, ret = new LocalVarNode(value, type, method));
-        valNodeNumberer.add(ret);
-      } else if (!(ret.getType().equals(type))) {
-        throw new RuntimeException(
-            "Value " + value + " of type " + type + " previously had type " + ret.getType());
-      }
-      return ret;
+    } else if (!(ret.getType().equals(type))) {
+      throw new RuntimeException(
+              "Value " + value + " of type " + type + " previously had type " + ret.getType());
     }
+    return ret;
   }
 
   /**
@@ -483,8 +473,9 @@ public class PAG {
     return ret;
   }
 
-  public Collection<VarNode> getVarNodes(Local local) {
-    Map<?, ContextVarNode> subMap = contextVarNodeMap.get(findLocalVarNode(local));
+  public Collection<VarNode> getVarNodes(SootMethod m, Local local) {
+    LocalVarNode lvn = findLocalVarNode(m, local, local.getType());
+    Map<?, ContextVarNode> subMap = contextVarNodeMap.get(lvn);
     if (subMap == null) {
       return Collections.emptySet();
     }
@@ -499,8 +490,9 @@ public class PAG {
   }
 
   /** Finds the LocalVarNode for the variable value, or returns null. */
-  public LocalVarNode findLocalVarNode(Object value) {
-    ValNode ret = findValNode(value);
+  public LocalVarNode findLocalVarNode(SootMethod m, Object value, Type type) {
+    Triple<SootMethod, Object, Type> key = new Triple<>(m, value, type);
+    ValNode ret = findValNode(key);
     if (ret instanceof LocalVarNode) {
       return (LocalVarNode) ret;
     }
@@ -508,8 +500,9 @@ public class PAG {
   }
 
   /** Finds the ContextVarNode for base variable value and context context, or returns null. */
-  public ContextVarNode findContextVarNode(Local baseValue, Context context) {
-    Map<Context, ContextVarNode> contextMap = contextVarNodeMap.get(findLocalVarNode(baseValue));
+  public ContextVarNode findContextVarNode(SootMethod m, Local baseValue, Context context) {
+    LocalVarNode lvn = findLocalVarNode(m, baseValue, baseValue.getType());
+    Map<Context, ContextVarNode> contextMap = contextVarNodeMap.get(lvn);
     return contextMap == null ? null : contextMap.get(context);
   }
 

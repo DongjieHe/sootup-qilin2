@@ -20,6 +20,7 @@ package qilin.test.util;
 
 import java.util.Objects;
 import qilin.core.PTA;
+import qilin.core.pag.LocalVarNode;
 import qilin.core.sets.PointsToSet;
 import qilin.pta.PTAConfig;
 import qilin.util.PTAUtils;
@@ -105,18 +106,14 @@ public class AliasAssertion implements IAssertion {
     }
     PointsToSet pts1 = pta.reachingObjects(sm, (Local) va).toCIPointsToSet();
     if (DEBUG) {
-      System.out.println(
-          "va points to: "
-              + PTAUtils.getNodeLabel(pta.getPag().findLocalVarNode(va))
-              + pta.getPag().findLocalVarNode(va));
+      LocalVarNode lvn = pta.getPag().findLocalVarNode(sm, va, va.getType());
+      System.out.println("va points to: " + PTAUtils.getNodeLabel(lvn) + lvn);
       PTAUtils.printPts(pta, pts1);
     }
     PointsToSet pts2 = pta.reachingObjects(sm, (Local) vb).toCIPointsToSet();
     if (DEBUG) {
-      System.out.println(
-          "vb points to: "
-              + PTAUtils.getNodeLabel(pta.getPag().findLocalVarNode(vb))
-              + pta.getPag().findLocalVarNode(vb));
+      LocalVarNode lvn = pta.getPag().findLocalVarNode(sm, vb, vb.getType());
+      System.out.println("vb points to: " + PTAUtils.getNodeLabel(lvn) + lvn);
       PTAUtils.printPts(pta, pts2);
     }
     return pts1.hasNonEmptyIntersection(pts2);

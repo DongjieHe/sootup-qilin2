@@ -123,7 +123,7 @@ public abstract class PTA implements PointsToAnalysis {
   public PointsToSet reachingObjects(SootMethod m, Local l) {
     // find all context nodes, and collect their answers
     final PointsToSetInternal ret = new HybridPointsToSet();
-    pag.getVarNodes(l)
+    pag.getVarNodes(m, l)
         .forEach(
             vn -> {
               ret.addAll(vn.getP2Set(), null);
@@ -167,7 +167,7 @@ public abstract class PTA implements PointsToAnalysis {
   /** Returns the set of objects pointed to by variable l in context c. */
   @Override
   public PointsToSet reachingObjects(Context c, SootMethod m, Local l) {
-    VarNode n = pag.findContextVarNode(l, c);
+    VarNode n = pag.findContextVarNode(m, l, c);
     PointsToSetInternal pts;
     if (n == null) {
       pts = HybridPointsToSet.getEmptySet();
