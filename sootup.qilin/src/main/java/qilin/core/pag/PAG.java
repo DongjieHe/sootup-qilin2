@@ -542,7 +542,7 @@ public class PAG {
   }
 
   private void handleArrayCopy(SootMethod method) {
-    Map<Stmt, Collection<Stmt>> newUnits = DataFactory.createMap();
+    Map<Stmt, Collection<JAssignStmt>> newUnits = DataFactory.createMap();
     Body body = PTAUtils.getMethodBody(method);
     Body.BodyBuilder builder = Body.builder(body, Collections.emptySet());
     int localCount = body.getLocalCount();
@@ -605,8 +605,8 @@ public class PAG {
 
     final MutableStmtGraph stmtGraph = builder.getStmtGraph();
     for (Stmt unit : newUnits.keySet()) {
-      for (Stmt succ : newUnits.get(unit)) {
-        stmtGraph.putEdge((FallsThroughStmt) unit, succ);
+      for (JAssignStmt succ : newUnits.get(unit)) {
+        stmtGraph.insertBefore(unit, succ);
       }
     }
     PTAUtils.updateMethodBody(method, builder.build());
