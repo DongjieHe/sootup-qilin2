@@ -30,6 +30,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import qilin.CoreConfig;
 import qilin.core.ArtificialMethod;
+import qilin.core.PTAScene;
 import qilin.util.PTAUtils;
 import soot.JavaMethods;
 import sootup.core.IdentifierFactory;
@@ -376,56 +377,64 @@ public class FakeMainFactory extends ArtificialMethod {
       // Do not create an actual list, since this method gets called quite often
       // Instead, callers usually just want to iterate over the result.
       Optional<SootMethod> oinit = cl.getMethod(sigClinit);
-      Optional<SootClass> osuperClass = cl.getSuperclass();
+      Optional<ClassType> osuperClass = cl.getSuperclass();
       // check super classes until finds a constructor or no super class there anymore.
-      while (oinit.isPresent() && osuperClass.isPresent()) {
-        oinit = osuperClass.get().getMethod(sigClinit);
-        osuperClass = osuperClass.get().getSuperclass();
+      while (oinit.isEmpty() && osuperClass.isPresent()) {
+        ClassType superType = osuperClass.get();
+        Optional<SootClass> oSuperClass = view.getClass(superType);
+        if (oSuperClass.isEmpty()) {
+          break;
+        }
+        SootClass superClass = oSuperClass.get();
+        oinit = superClass.getMethod(sigClinit);
+        osuperClass = superClass.getSuperclass();
       }
-      if (!oinit.isPresent()) {
+      if (oinit.isEmpty()) {
         return Collections.emptyList();
       }
       SootMethod initStart = oinit.get();
-      return new Iterable<SootMethod>() {
+      return () -> new Iterator<>() {
+        SootMethod current = initStart;
 
         @Override
-        public Iterator<SootMethod> iterator() {
-          return new Iterator<SootMethod>() {
-            SootMethod current = initStart;
+        public SootMethod next() {
+          if (!hasNext()) {
+            throw new NoSuchElementException();
+          }
+          SootMethod n = current;
 
-            @Override
-            public SootMethod next() {
-              if (!hasNext()) {
-                throw new NoSuchElementException();
-              }
-              SootMethod n = current;
-
-              // Pre-fetch the next element
-              current = null;
-              SootClass currentClass = (SootClass) view.getClass(n.getDeclaringClassType()).get();
-              while (true) {
-                Optional<SootClass> osuperClass = currentClass.getSuperclass();
-                if (!osuperClass.isPresent()) {
-                  break;
-                }
-
-                Optional<SootMethod> om = osuperClass.get().getMethod(sigClinit);
-                if (om.isPresent()) {
-                  current = om.get();
-                  break;
-                }
-
-                currentClass = osuperClass.get();
-              }
-
-              return n;
+          // Pre-fetch the next element
+          current = null;
+          Optional<SootClass> oCurrentClass = view.getClass(n.getDeclaringClassType());
+          if (oCurrentClass.isEmpty()) {
+            return n;
+          }
+          SootClass currentClass = oCurrentClass.get();
+          while (true) {
+            Optional<ClassType> osuperType1 = currentClass.getSuperclass();
+            if (osuperType1.isEmpty()) {
+              break;
             }
-
-            @Override
-            public boolean hasNext() {
-              return current != null;
+            ClassType classType = osuperType1.get();
+            Optional<SootClass> osuperClass1 = view.getClass(classType);
+            if (osuperClass1.isEmpty()) {
+              break;
             }
-          };
+            SootClass superClass = osuperClass1.get();
+            Optional<SootMethod> om = superClass.getMethod(sigClinit);
+            if (om.isPresent()) {
+              current = om.get();
+              break;
+            }
+            currentClass = superClass;
+          }
+
+          return n;
+        }
+
+        @Override
+        public boolean hasNext() {
+          return current != null;
         }
       };
     }

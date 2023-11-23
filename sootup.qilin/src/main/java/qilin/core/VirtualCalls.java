@@ -164,10 +164,10 @@ public class VirtualCalls {
     }
 
     if (declaredType != null
-        && !canStoreType(t, declaredType)) {
+        && !PTAScene.v().canStoreType(t, declaredType)) {
       return;
     }
-    if (sigType != null && !canStoreType(t, sigType)) {
+    if (sigType != null && !PTAScene.v().canStoreType(t, sigType)) {
       return;
     }
     if (t instanceof ClassType) {
@@ -255,12 +255,5 @@ public class VirtualCalls {
     }
 
     baseToSubTypes.computeIfAbsent(base, k -> DataFactory.createSet()).addAll(newSubTypes);
-  }
-
-  public boolean canStoreType(final Type child, final Type parent) {
-    if (child == parent || child.equals(parent)) {
-      return true;
-    }
-    return PTAScene.v().getView().getTypeHierarchy().isSubtype(parent, child);
   }
 }

@@ -199,6 +199,9 @@ public class PTAScene {
   }
 
   public boolean canStoreType(final Type child, final Type parent) {
+    if (child == parent || child.equals(parent)) {
+      return true;
+    }
     return view.getTypeHierarchy().isSubtype(parent, child);
   }
 
